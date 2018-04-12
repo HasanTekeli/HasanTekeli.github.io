@@ -1,0 +1,33 @@
+body {
+  background-color: #66ffff;
+}
+
+.navh2 {
+ font-size: 2vw;
+	text-align: center;
+}
+
+.navh1 {
+	text-align: center;
+}
+
+footer {
+  font-size: 6px;
+  text-align: center;
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.pp {
+  clear:both;
+  float: right;
+  padding:20px;
+}
+
+.boxed {
+  border: 1px solid green;
+  width: 700px;
+	height: auto;
+	margin: auto;
+  background-image: url("https://static.vecteezy.com/system/resources/previews/000/101/237/non_2x/free-abstract-background-11-vector.jpg")
+}
