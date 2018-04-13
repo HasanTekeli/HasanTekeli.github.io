@@ -17,14 +17,14 @@ hr {
   color: rgba(255, 0, 255, 0.8);
 }
 
-header.startup {
+header.bio {
   background-position: center;
   background-image: url("../bg.jpg");
   background-size: cover;
   height: 100%;
 }
 
-header.startup hr {
+header.bio hr {
   margin-top: 200px;
   margin-bottom: 30px; 
 }
