@@ -104,3 +104,66 @@ Logical Operators
 	if (!(name === "Bob")) {
 		alert("Hi Bob");
 	}
+
+
+-------------
+JS Functions
+-------------
+arguments, function'larda parantez içine yazılan şeyler (console.log(helloo)). Bazı functionlarda birden fazla argument yazılabilir.
+
+İki farklı function oluşturma yöntemi var
+- Function Declaration
+
+	function sayHello() {
+		console.log("Hello");
+	}
+	sayhello();
+
+Function'ın ismi belli
+
+
+- Function Expression
+
+	var sayBye = function() {
+		console.log("Bye");
+	}
+	sayBye();
+
+Function'ın ismi belli değil, bu yüzden anonymous function deniyor.
+
+------------------------
+
+	function sing() {
+		console.log("AHHHHHHHHHH");
+		console.log("TEEEEEEEEEE");
+	}
+	sing();
+
+Bunu kullandığımızda değiştirmek zor olur.
+
+	function sing(song){
+		console.log(song);
+	}
+	sing("Laaaa deeee ddaaaaa");
+	sing("helllooooo");
+	sing("daaaa daaaaa");
+
+Bunu kullandığımızda daha extensible, daha kolay olabilir.
+
+Başka bir örnek
+
+	function multiply(a, b) {
+		return a * b
+	}
+	multiply(5, 10);
+
+Eğer function bir sonuç verecekse (mesela matematik işlemleri) return ile yapmamız lazım. Bir function'ın içinde birden fazla return yazarsak, ilk return'den sonrasını okumaz ve function'ı sonlandırır. Bu örneğe IF statement eklersek bu durum geçersiz kalır, mesela:
+
+	function multiply(a, b) {
+		if (a > 10 || b > 10) {
+			return "that's too hard"
+		} else {
+			return a*b;
+		}
+	}
+
