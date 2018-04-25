@@ -1,0 +1,7 @@
+Git usage /desktop/hasantekeli.github.io
+
+git status // show the modified files
+git diff // show the differences
+git add . // add all the files
+git commit -m "commit message" // add a commit message
+git push origin master // send to the github

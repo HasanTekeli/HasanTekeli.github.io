@@ -1,0 +1,56 @@
+
+JavaScript Notları
+
+
+----------------------------------------
+Types (JS'e girebileceğimiz elementler)
+----------------------------------------
+1. Number // matematik işlemleri yapabiliriz. Tek değişik olan % bu da bölümden kalan sayıyı verir (12 % 9 = 3). 
+	Eğer eşittir işareti yapmak istersek === yapmamız gerekir. Tek = değişken atamaya yarıyor.
+
+	!== Bu eşit değil anlamına geliyor. Ünlem işareti neyin başına gelirse onu olumsuz yapar.
+
+2. String // Metin yazarken kullanılır. "" veya '' kullanılabilir. Metin içinde aynı işaretten varsa o işaretin önüne \ konulur (mesela 'She isn\'t lazy')
+
+	- 10 + "34" = 1034 // Burada JS iki metni birleştirmeye çalıştığımızı düşünüyor. 10 - "3" = 7 burada da JS yanlış yazdığımızı ve ikincinin metin değil sayı olduğunu düşünüyor.
+
+3. Boolean // True / False
+	Örnek: 4 < 2 False
+
+4. Undefined 
+	- variable herhangi bir şeye atanmadığı zaman undefined olur.
+	- Bunu mesela Signup formda e-posta ve şifre alanları için kullanabiliriz. Eğer veri undefined ise girilmesi gerektiğini hatırlatabliriz.
+
+5. Null
+6. Symbol (New in ECMAScript 6) //
+7. Object
+
+--------------
+JS Comparisons
+--------------
+!== Eşit Değildir
+=== Eşittir
+>= Büyük / Eşit
+<= Küçük / Eşit
+> Büyük
+< Küçük
+
+------------
+JS Variables
+------------
+var // 
+	- var george = "These pretzels are making me thirsty" + "!" Burada george kelimesine "" içindeki metni atadık, bu sayede tüm metni tekrar yazmadan george yazdığımızda metin gelecektir. 
+	- Değişkenler sayı ile başlayamaz, bir harf ve sayı olabilir.
+	- Değişkenler simge olarak sadece $ veya _ ile başlayabilir.
+	- Variable olarak herhangi bir Type'ı kullanabiliriz (Numbers, Booleans etc..)
+
+Girdilerle Toplama yapımı
+-------------------------
+prompt() sayfanın üstünde metin girebileceğimiz bir kutu çıkartır.
+alert() ise bir uyarı kutusu çıkartır. Bu ikisini kullanarak toplama yapabiliriz.
+	- var first = prompt("enter first number");
+	  var second = prompt("enter second number"); 
+	  var sum = Number(first) + Number(second); 
+	  alert("The sum is: " + sum);
+
+prompt() ile girilen değerler metin olarak görünür. Bunların sayı olduğunu JS'e söylemek için Number() kullanılabilr.
