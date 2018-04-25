@@ -54,3 +54,53 @@ alert() ise bir uyarı kutusu çıkartır. Bu ikisini kullanarak toplama yapabil
 	  alert("The sum is: " + sum);
 
 prompt() ile girilen değerler metin olarak görünür. Bunların sayı olduğunu JS'e söylemek için Number() kullanılabilr.
+
+------------
+Control Flow - JS Conditionals
+------------
+
+IF
+	
+	var name = "Billy";
+	if (name === "Billy") {
+		alert("hi Billy!");
+	};
+
+ELSE (iki seçenek)
+
+	if (name === "Billy") {
+		alert("hi Billy");
+	} else {
+		alert("hmm I don't know you");
+	}
+
+ELSE IF (ikiden fazla seçenek)
+
+	if (name === "Billy") {
+		alert("hi Billy!");
+	} else if (name === "Suzy") {
+		alert("Hi Suzy");
+	} else {
+		alert("I don't know you");
+	}
+
+----------------------
+Logical Operators
+-----------------
+&& and, iki seçenek de doğru olmak zorunda
+
+	if (firstName === "Bob" && lastName === "Smith") {
+		alert("Hi Bob Smith");
+	}
+
+|| or, iki seçenekten biri doğru olmak zorunda
+
+	if (name === "Billy" || name === "Suzy") {
+		alert("Hi Billy or Suzy");
+	}
+
+! not, verilen seçenek olmamalı
+	
+	if (!(name === "Bob")) {
+		alert("Hi Bob");
+	}
