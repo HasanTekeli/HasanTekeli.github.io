@@ -442,6 +442,15 @@ while loop ile do-while loop arasındaki fark; while loop'ta ilk olarak conditio
 
 do while loop ise ilk olarak işi yapıyor sonra kontrol ediyor. Eğer her ikisinde de > 10 yaparsak ilki hiçbir çıktı vermez, çünkü ilk condition 10'dan küçük olması gerekir diyor. Ancak ikincisinde sadece konsola 10 yazar, sonrası gelmez. CounterTwo 10 olduğu için onu basar konsola sonrasında conditiona takılır.
 
+üstteki Do Loop, daha üstte bulunan while loop ile aynı şeyi yapıyor.
+aradaki fark while loop'ta ilk olarak condition'ı kontrol ediyor
+(counterOne=0) yani CounterOne 0'dan büyükse o zaman console logu yap.
+do while loop ise ilk olarak işi yapıyor sonra kontrol ediyor.
+Eğer her ikisinde de > 10 yaparsak ilki hiçbir çıktı vermez, çünkü ilk
+condition 10'dan küçük olması gerekir diyor.
+Ancak ikincisinde sadece konsola 10 yazar, sonrası gelmez. CounterTwo
+10 olduğu için onu basar konsola sonrasında conditiona takılır.
+
 
 FOREACH Loop (for ile farkı)
 ------------
@@ -467,6 +476,8 @@ for ve foreach aşağıdaki işlemde aynı işi yapıyor. Ancak forEach ile çok
 		console.log(todo, i);
 	})
 
+forEach bir array'in peşine yazılır ve devamında ne yapacağını sorar
+todos ile yapacağımız iş function ile belirtilir.
 
 Yukarıdaki forEach Loop'ta function'ı asıl işlemden ayırabiliriz.
 
@@ -476,7 +487,7 @@ Yukarıdaki forEach Loop'ta function'ı asıl işlemden ayırabiliriz.
 
 	todos.forEach(logTodos);
 
-Bu şekilde ayıdığımızda logTodos function'ını başka yerlerde de kullanabiliriz. Mesela başka bir listemiz daha varsa (mesela todosImportant) üstteki kodun altına şunu eklememiz yeterli:
+Bu şekilde ayırdığımızda logTodos function'ını başka yerlerde de kullanabiliriz. Mesela başka bir listemiz daha varsa (mesela todosImportant) üstteki kodun altına şunu eklememiz yeterli:
 
 	todosImportant.forEach(logTodos);
 
