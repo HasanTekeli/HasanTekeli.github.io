@@ -350,6 +350,10 @@ obj.thisIsAMethod() //method
 Loops
 ----------------------------------
 Loop işleri otomatikleştirmek için kullanılır. Mesela uzun bir todo listemiz var, ve bu listedeki her item'ın sonuna ünlem işareti koymak istiyoruz. Bunu tek tek yapmak oldukça zaman alabilir.
+
+
+FOR Loop
+--------
 	
 	var todos = [
 	"clean room",
@@ -376,13 +380,13 @@ Yazdığımızda 0'dan başlayarak 4'e kadar sayıları basar. Çünkü 5. itemd
 		console.log(todos[i]);
 	}
 
-Yazdığımızda listedeki item'lara sıralar(clean room, brush teeth, etc..) Tüm itemların sonuna ! işareti koymak için (sadece console log çıktısına bir defalığına ekler):
+Yazdığımızda listedeki item'ları sıralar(clean room, brush teeth, etc..) Tüm itemların sonuna ! işareti koymak için (sadece console log çıktısına bir defalığına ekler):
 
 	for (var i=0; i < todos.length; i++) {
 		console.log(todos[i] + "!");
 	}
 
-Tüm console log çıktılarına göstermek için:
+Tüm console log çıktılarında göstermek için:
 
 	for (var i=0; i < todos.length; i++) {
 		todos[i] = todos[i] + "!";
@@ -395,9 +399,87 @@ Tüm console log çıktılarına göstermek için:
 	}
 
 
-Bunu düzeltmek için:
+Bunu düzeltmek için loop devreye girmeden todos.length'i bir değişkene atarız ve "i < todos.length" kısmını yeni değişken olan todosLength ile güncelleriz:
 
 	var todosLength = todos.length;
 	for (var i=0; i < todosLength; i++) {
 		todos.pop();
 	}
+
+Bu şekilde yaptığımızda listedeki tüm itemları çıkartmış oluruz.
+
+
+WHILE Loop
+----------
+
+	var counterOne = 0;
+	while (counterOne < 10) {
+		console.log(counterOne);
+		counterOne++
+	}
+
+Bu loop'ta counterOne değişkenini 0 yaptık ve işlemin 10'dan küçük olmasını istedik. counterOne++ kısmında, konsol saymaya 0'dan başlar ve 10'dan küçük olacak şekilde en yüksek rakamda işlemi durdurur.
+
+Bunun tersi, yani 10'dan geriye şu şekilde yapabiliriz. CounterOne'daki -- işaretine dikkat. Eğer bunu ++ yapsaydık tarayıcı infinite loop'a girer ve çökerdi.
+
+	var counterOne = 10;
+	while (counterOne > 0) {
+		console.log(counterOne);
+		counterOne--
+	}
+
+
+DO Loop (aka "do while loop")
+--------
+
+	var counterTwo = 10
+	do {
+		console.log(counterTwo);
+		counterTwo--
+	} while (counterTwo > 0)
+
+while loop ile do-while loop arasındaki fark; while loop'ta ilk olarak condition'ı kontrol ediyor. (counterOne=0) yani CounterOne 0'dan büyükse o zaman console logu yap.
+
+do while loop ise ilk olarak işi yapıyor sonra kontrol ediyor. Eğer her ikisinde de > 10 yaparsak ilki hiçbir çıktı vermez, çünkü ilk condition 10'dan küçük olması gerekir diyor. Ancak ikincisinde sadece konsola 10 yazar, sonrası gelmez. CounterTwo 10 olduğu için onu basar konsola sonrasında conditiona takılır.
+
+
+FOREACH Loop (for ile farkı)
+------------
+
+for ve foreach aşağıdaki işlemde aynı işi yapıyor. Ancak forEach ile çok daha az kod yazarak aynı işlemi gereçekleştirebiliyoruz.
+
+	var todos = [
+		"clean room",
+		"brush teeth",
+		"exercise",
+		"study js",
+		"eat healthy"
+		]
+
+	//FOR
+	var todosLength = todos.length;
+	for (var i=0; i < todosLength; i++) {
+		console.log(todos[i], i);
+	}
+
+	//FOREACH
+	todos.forEach(function(todo, i) {
+		console.log(todo, i);
+	})
+
+
+Yukarıdaki forEach Loop'ta function'ı asıl işlemden ayırabiliriz.
+
+	function logTodos(todo, i) {
+		console.log(todo, i);
+	}
+
+	todos.forEach(logTodos);
+
+Bu şekilde ayıdığımızda logTodos function'ını başka yerlerde de kullanabiliriz. Mesela başka bir listemiz daha varsa (mesela todosImportant) üstteki kodun altına şunu eklememiz yeterli:
+
+	todosImportant.forEach(logTodos);
+
+
+Projects/Loop içindeki js dosyasında bulunan yorumları buraya entegre et.
+Bölüm 10 ders 92'den devam, loop kullanarak facebook database'i kontrol etmeyi gösterecek.
