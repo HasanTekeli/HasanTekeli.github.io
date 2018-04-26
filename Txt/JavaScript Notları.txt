@@ -22,6 +22,7 @@ Types (JS'e girebileceğimiz elementler)
 	- Bunu mesela Signup formda e-posta ve şifre alanları için kullanabiliriz. Eğer veri undefined ise girilmesi gerektiğini hatırlatabliriz.
 
 5. Null
+	- boş object'lerde kullanılır ve kesinlikle değer atanamaz.
 6. Symbol (New in ECMAScript 6) //
 7. Object
 
@@ -167,3 +168,92 @@ Eğer function bir sonuç verecekse (mesela matematik işlemleri) return ile yap
 		}
 	}
 
+------------------------
+Data Structures - Arrays
+------------------------
+
+Array'lerde köşeli parantez kullanılır.
+
+	var listOfAnimals = ["tiger", "cat", "bear", "bird"];
+
+Array içindeki itemlara ulaşmak için:
+	
+	list[1];
+
+Itemlara ulaşırken saymaya sıfırdan başlamalıyız. Tiger'a ulaşmak için list[0] yazmalıyız.
+
+Array içine her türden type koyabiliriz (numbers, booleans, functions etc...). Tüm türleri aynı array içinde de kullanabiliriz (mix of types), ancak performans açısından bu pek önerilmiyor. 
+
+Array içinde array yapılabilir. Eğer array içinde array'in içindeki bir item'a ulaşacaksak;
+	
+	var list = [
+		["tiger", "cat", "bear", "bird"]
+	];
+
+	console.log(list[0][2]);
+
+bize ilk array'in içindeki (zaten bir tane var) üçüncü item olan bear'i verir.
+
+Array Methods
+
+	list.shift(); // ilk item'ı atar
+	list.pop(); // son item'ı atar
+	list.push("elephant"); // listeye bir item ekler
+	list.concat(["bee", "deer"]) // listeye birden fazla item ekler 
+									(array olarak) ancak concat ile eklenenler yeni bir liste olarak eklenir ve orijinal listede görünmezler, birden fazla array'i birleştirmede kullanılır.
+	list.sort(); // listeyi (alfabetik, numerik) sıralar.
+	list.reverse(); // listeyi tersten sıralar.
+	list.splice(0, 1); // belirtilen item'ı listeden çıkartır (ilk
+							array'in ikinci item'ı)
+
+-------------------------
+Data Structures - Objects
+-------------------------
+
+Bir değişken içinde farklı özellikleri toplamak için kullanılır. İki nokta kullanımına dikkat etmelisin.
+
+	var user = {
+		name: "John",
+		age: 34,
+		hobby: "Soccer",
+		isMarried: false,
+		spells: ["abrakadabra", "shazam", "boo"]
+		shout: function() {
+			console.log("AHHHH");
+		}
+	};
+
+Object içinde array(spells) ve function(shout) kullanılabilir. Bir object'in içindeki function'a (object'ten sonra nokta ile yazılan şeyler - list.pop) "Method" denir.
+Object içinden bir item'ı seçmek için
+	
+	user.name;
+	user.age;
+
+Object içine bir item eklemek için
+	
+	user.favoriteFood = "spinach";
+
+Burada eşittir kullanıldı.
+
+Bir item'ın değerini değiştirmek için:
+
+	user.isMarried = true;
+
+Array'ler liste yapmak için, object'ler bir şey hakkındaki farklı değerleri depolamak için daha uygun.
+
+Array içinde object kullanılabilir:
+
+	var list = [
+		{
+			username: "andy",
+			password: "secret"
+		}
+		{
+			username: "jess",
+			password: "123"
+		}
+	]
+
+Boş bir array ve object yaratabiliriz. 
+
+Exercise: Build Facebook (bölüm 10 ders 89)'ta kaldım. Andrei Files Exercise 7'da yaptıklarımla devam edecek.
