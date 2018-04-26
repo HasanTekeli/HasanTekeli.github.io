@@ -254,6 +254,150 @@ Array içinde object kullanılabilir:
 		}
 	]
 
-Boş bir array ve object yaratabiliriz. 
 
-Exercise: Build Facebook (bölüm 10 ders 89)'ta kaldım. Andrei Files Exercise 7'da yaptıklarımla devam edecek.
+---------------
+Build Facebook
+---------------
+
+// Burada basit bir Facebook yapıldı. İlk olarak database isimli bir değişken oluşturuldu ve içerisine kayıtlı bir kullanıcı eklendi.
+
+	var database = [
+	{
+		username: "John",
+		password: "3456"
+	}
+	];
+
+// İkinci olarak kullanıcı üstteki bilgilerle giriş yaptığında görebileceği bir timeline yapıldı.
+
+	var newsFeed = [
+		{
+			username: "Jack",
+			timeline: "Helloo everybody!!"
+		},	
+		{
+			username: "Jones",
+			timeline: "Byeeeee!!"
+		},
+		{
+			username: "Whiskey",
+			timeline: "Going to sleep!!"
+		}
+	];
+
+// Üçüncü olarak kişinin sign in yapabilmesi için prompt ile kullanıcı adı ve şifre soruldu.
+
+	var userNamePrompt = prompt("What's your username?");
+	var passwordPrompt = prompt("Your password?");
+
+// Kullanıcının adı ve şifresini kontrol edecek bir signIn function'ı oluşturuldu.
+
+	function signIn(username, password) {
+		if (username === database[0].username && password === database[0].password) {
+			console.log(newsFeed);
+		} else {
+			alert("Sorry wrong username");
+		}
+	}
+
+// Son olarak oluşturulan function'ın sayfa yüklenince başlaması için signIn komutu çalıştırıldı.
+
+	signIn(userNamePrompt, passwordPrompt);
+
+-----------
+Terminology
+-----------
+
+1. function declaration
+	function newFunction() {
+
+	}
+
+2. Function expression (noktalı virgül ile biter!)
+	var newFunction = function() {
+
+	};
+
+3. expression (expression'lar noktalı virgül ile biter)
+	1+3;
+	var a = 2;
+	return true;
+
+4. calling or invoking a function
+	alert()
+	newFunction(param1, param2);
+
+5. Assign a variable
+	var a = true;
+
+6. function vs method (bir objenin içindeki function)
+	function thisIsAFunction() {
+
+	}
+------------------
+	var obj = {
+		thisIsAMethod: function() {
+
+		}
+	}
+
+Function ve method'a ulaşma yöntemi de farklıdır.
+thisIsAFunction() //function
+obj.thisIsAMethod() //method
+
+
+----------------------------------
+Loops
+----------------------------------
+Loop işleri otomatikleştirmek için kullanılır. Mesela uzun bir todo listemiz var, ve bu listedeki her item'ın sonuna ünlem işareti koymak istiyoruz. Bunu tek tek yapmak oldukça zaman alabilir.
+	
+	var todos = [
+	"clean room",
+	"brush teeth",
+	"exercise",
+	"study js",
+	"eat healthy"
+	]
+
+	for (var i=0; i < todos.length; i++) {
+
+	}
+
+Üstte görülen loop'ların genel ifadesi, neredeyse her loop'ta görülebilir. Açıklaması ise şöyle:
+Burada kullanılan "i" loop'larda genel olarak kullanılan bir ifade, index'e karşılık geliyor. i=0'nun anlamı index'i 0'dan al, yani ilk item'dan başla. i < todos.length 'in anlamı "ilk olarak liste uzunluğunu al ve daha fazla uygulama", yani infinite loop'u durdurmak için kullanılır. Listede herhangi bir item varsa loop'u başlat anlamına geliyor. i++ ise "ilk item'ı yaptıktan sonra diğer item'lara geç" demek (diğer bir deyişle i+1). 
+
+	for (var i=0; i < todos.length; i++) {
+		console.log(i);
+	}
+
+Yazdığımızda 0'dan başlayarak 4'e kadar sayıları basar. Çünkü 5. itemda bırakmasını söyledik.
+
+	for (var i=0; i < todos.length; i++) {
+		console.log(todos[i]);
+	}
+
+Yazdığımızda listedeki item'lara sıralar(clean room, brush teeth, etc..) Tüm itemların sonuna ! işareti koymak için (sadece console log çıktısına bir defalığına ekler):
+
+	for (var i=0; i < todos.length; i++) {
+		console.log(todos[i] + "!");
+	}
+
+Tüm console log çıktılarına göstermek için:
+
+	for (var i=0; i < todos.length; i++) {
+		todos[i] = todos[i] + "!";
+	}
+
+Önemli not: Bu tür bir loop'un içinde bir method kullanırsak (mesela todos.pop) "i < todos.length" işleminden dolayı sadece iki item kalana kadar işleme devam eder. Sorunlu olan (yani son iki item hariç hepsini çıkartan)
+
+	for (var i=0; i < todos.length; i++) {
+		todos.pop();
+	}
+
+
+Bunu düzeltmek için:
+
+	var todosLength = todos.length;
+	for (var i=0; i < todosLength; i++) {
+		todos.pop();
+	}
