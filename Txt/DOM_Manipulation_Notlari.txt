@@ -1,0 +1,113 @@
+JS kullanarak bir web sayfasında yapabileceklerimiz (buna DOM Manipulation deniyor)şu şekilde:
+
+* change all the HTML elements in the page
+* change all the HTML attributes in the page
+* change all the CSS styles in the page
+* remove existing HTML elements and attributes
+* add new HTML elements and attributes
+* Javascript can react to all existing HTML events in the page
+* JavaScript can create new HTML events in the page
+
+DOM'un açılımı document object model. DOM web sitesinde bulunan parçaların tümüdür (head, body, h1, p etc...). Bir websitesini açmaya çalıştığımızda tarayıcı otomatik olarak DOM'u oluşturur. Javascript'in site üzerinde gerekli değişiklikleri yapabilmesi için DOM'a ihtiyaç duyuyoruz.
+
+Tarayıcılarda DOM'a document object'i ile ulaşabiliriz (konsola "document.write("hello")" yazarsak web sayfasında hello yazısını görebiliriz.
+
+Document taraıcıda gördüğümüz ekrandır. Document'in parent object'i window'dur. Window ise tarayıcının tamamıdır. Mesela daha önce gördüğümüz alert(), window'un alt fonksiyonudur. Bu sayede alert() function'ını önüne birşey yazmadan kullanabiliriz. window'un altında bulunan function'lar window belirtilmeden kullanılabilir, çünkü en kapsayıcı olan window'dur. Ancak üstte gördüğümüz write() function'ını tek başına kullanamayız. Çünkü window'un değil document'in bir fonksiyonudur (bu yüzden document.write() yazmalıyız).
+
+JS document object'ini gerekli görürse değiştirebilir. 
+
+-------------------
+DOM Selectors
+-------------------
+
+
+
+getElementsByTagName
+--------------------
+
+- Tagname dediği h1, title gibi html tagleridir.
+
+getElementsByClassName
+----------------------
+
+- bir tag'in içerisinde class attribute kullandıysak (mesela <h1 class="titleOfText">), bu class'a sahip olan tüm attribute'leri seçmek için kullanırız. Eğer bu class dahilindeki tek bir element'i seçeceksek "document.getElementsByClassName("second")[0]" şeklinde yazmalıyız.
+
+getElementById
+--------------
+
+- Üstteki gibi class yerine veya yanında bir ID kullandıysak bunu seçmek için kullanırız. Ancak üstteki ikisinde çoğul idi (elements) bunda tekil olmasının sebebi kod içinde kullanılan her bir id unique olmalı, yani tek bir şey için kullanılmalı.
+
+Bu üstteki üçünden daha etkili ve daha yeni olan iki seçici aşağıdaki querySelector'lar.
+
+querySelector
+-------------
+
+- document.querySelector("h1") sadece ilk item'ı seçer
+
+querySelectorAll
+----------------
+
+- Üstteki gibi ama hepsini seçer. Birden fazla farklı attribute'leri seçeceksek parantez içinde virgül ile ayırarak yazabiliriz ("h1 ,li").
+
+getAttribute
+------------
+
+- document.querySelector("li").getAttribute("random"); ile random'ın değerini alabiliriz (örnekte 23 çıkıyor). Bunun için önce item'ı seçmemiz (querySelector'lardan biri ile), sonra devamına . ile eklememiz gerekiyor.
+
+setAttribute
+------------
+
+- document.querySelector("li").setAttribute("random", "1000"); yazdığımızda random'ın değerini 1000'e dönüştürür. Bununla aynı zamanda class ekleyebilir ve css'i değiştirebiliriz.
+
+Ancak değişimi bunlarla yapmaktansa aşağıdakilerle yapmak daha uygun.
+
+style.{property}
+----------------
+
+- document.querySelector("li").style.background = "yellow" yazdığımızda "li"nin arka planını sarı yapar. Ancak css ve html'in ayrı olması gerektiği için (separation of concerns) aşağıdakilerle yapmak daha iyi olur.
+
+className
+----------
+
+- document.querySelector("h1").className = "coolTitle"; yazdığımızda "h1"a coolTitle class'ını ekler
+
+classList
+---------
+
+- document.querySelector("li").classList; yazdığımızda class'ların listesini verir. Alt başlık olarak aşağıdakilere bakalım.
+
+classList.add("coolTitle"); ile yeni bir class ekleriz
+
+classList.remove("") ile kaldırırız.
+
+classList.toggle("") remove yerine kullanılabilir. Bu sayede class'lar arasında (orijinal ile sonradan eklenen) geçiş yapılabilir. Mesela shopping list'te bir item'a tıkladığımızda üzeri çizili olmaaını ikinci kere tıkladığımızda normale dönmesini istiyorsak bunu kullanırız.
+
+innerHTML
+---------
+
+- Bunu kullanmak tehlikeli diyor. 
+
+document.querySelector("h1").innerHTML = "<strong>!!!!</strong>; yazdığımızda h1'ı seçer ve onu !!!!! ile değiştirir.
+
+parentElement
+-------------
+
+- bir item'ın parent elementini bulmada kullanılır.
+
+document.querySelectorAll("li")[1].parentElement; yazdığımızda <ul> değerini verir çünkü listenin ana elementi <ul> veya <ol> dur.
+
+children
+--------
+
+- Bir item'ın children'ını verir.
+
+document.querySelectorAll("li")[1].parentElement.parentElement; yazdığımızda <ul> neyin içindeyse (body) onu verir. Sonuna children eklersek body'nin içindeki tüm elementleri listeler. (document.querySelectorAll("li")[1].parentElement.parentElement.children)
+
+---------------------------------------------------------------------------------------
+!! Önemli bir Nokta
+Eğer birşeyi kullanacağımızda sürekli querySelector ile seçmemiz gerekiyorsa bu performans sorununa neden olabilir. Bunun yerine bu seçim işini en başta bir değişkene atayabiliriz (cache selectors)
+
+- var h1 = document.querySelector("h1");
+---------------------------------------------------------------------------------------
+
+Ders 97'den devam
