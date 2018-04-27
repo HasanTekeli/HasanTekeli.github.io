@@ -367,8 +367,8 @@ FOR Loop
 
 	}
 
-Üstte görülen loop'ların genel ifadesi, neredeyse her loop'ta görülebilir. Açıklaması ise şöyle:
-Burada kullanılan "i" loop'larda genel olarak kullanılan bir ifade, index'e karşılık geliyor. i=0'nun anlamı index'i 0'dan al, yani ilk item'dan başla. i < todos.length 'in anlamı "ilk olarak liste uzunluğunu al ve daha fazla uygulama", yani infinite loop'u durdurmak için kullanılır. Listede herhangi bir item varsa loop'u başlat anlamına geliyor. i++ ise "ilk item'ı yaptıktan sonra diğer item'lara geç" demek (diğer bir deyişle i+1). 
+Üstte görülen for loop'ların genel ifadesi, neredeyse her for loop'ta görülebilir. Açıklaması ise şöyle:
+Burada kullanılan "i" loop'larda genel olarak kullanılan bir ifade, index'e karşılık geliyor. i=0'nun anlamı index'i 0'dan al, yani ilk item'dan başla. i < todos.length 'in anlamı "ilk olarak liste uzunluğunu al ve daha fazla uygulama", yani infinite loop'u durdurmak için kullanılır. i++ ise "ilk item'ı yaptıktan sonra diğer item'lara geç" demek (diğer bir deyişle i+1). 
 
 	for (var i=0; i < todos.length; i++) {
 		console.log(i);
@@ -420,7 +420,7 @@ WHILE Loop
 
 Bu loop'ta counterOne değişkenini 0 yaptık ve işlemin 10'dan küçük olmasını istedik. counterOne++ kısmında, konsol saymaya 0'dan başlar ve 10'dan küçük olacak şekilde en yüksek rakamda işlemi durdurur.
 
-Bunun tersi, yani 10'dan geriye şu şekilde yapabiliriz. CounterOne'daki -- işaretine dikkat. Eğer bunu ++ yapsaydık tarayıcı infinite loop'a girer ve çökerdi.
+Bunun tersi, yani 10'dan geriye şu şekilde yapabiliriz. CounterOne'daki -- işaretine dikkat. Eğer bunu ++ yapsaydık tarayıcı 10'dan yukarı doğru saymaya başlar, bitirecek bir ifade olmadığı için infinite loop'a girer ve çökerdi.
 
 	var counterOne = 10;
 	while (counterOne > 0) {
@@ -441,15 +441,6 @@ DO Loop (aka "do while loop")
 while loop ile do-while loop arasındaki fark; while loop'ta ilk olarak condition'ı kontrol ediyor. (counterOne=0) yani CounterOne 0'dan büyükse o zaman console logu yap.
 
 do while loop ise ilk olarak işi yapıyor sonra kontrol ediyor. Eğer her ikisinde de > 10 yaparsak ilki hiçbir çıktı vermez, çünkü ilk condition 10'dan küçük olması gerekir diyor. Ancak ikincisinde sadece konsola 10 yazar, sonrası gelmez. CounterTwo 10 olduğu için onu basar konsola sonrasında conditiona takılır.
-
-üstteki Do Loop, daha üstte bulunan while loop ile aynı şeyi yapıyor.
-aradaki fark while loop'ta ilk olarak condition'ı kontrol ediyor
-(counterOne=0) yani CounterOne 0'dan büyükse o zaman console logu yap.
-do while loop ise ilk olarak işi yapıyor sonra kontrol ediyor.
-Eğer her ikisinde de > 10 yaparsak ilki hiçbir çıktı vermez, çünkü ilk
-condition 10'dan küçük olması gerekir diyor.
-Ancak ikincisinde sadece konsola 10 yazar, sonrası gelmez. CounterTwo
-10 olduğu için onu basar konsola sonrasında conditiona takılır.
 
 
 FOREACH Loop (for ile farkı)
@@ -476,8 +467,7 @@ for ve foreach aşağıdaki işlemde aynı işi yapıyor. Ancak forEach ile çok
 		console.log(todo, i);
 	})
 
-forEach bir array'in peşine yazılır ve devamında ne yapacağını sorar
-todos ile yapacağımız iş function ile belirtilir.
+forEach bir array'in peşine yazılır ve devamında ne yapacağını sorar. todos ile yapacağımız iş function ile belirtilir.
 
 Yukarıdaki forEach Loop'ta function'ı asıl işlemden ayırabiliriz.
 
@@ -492,5 +482,41 @@ Bu şekilde ayırdığımızda logTodos function'ını başka yerlerde de kullan
 	todosImportant.forEach(logTodos);
 
 
-Projects/Loop içindeki js dosyasında bulunan yorumları buraya entegre et.
-Bölüm 10 ders 92'den devam, loop kullanarak facebook database'i kontrol etmeyi gösterecek.
+--------------
+Facebook App 2
+--------------
+
+İlk facebook app'te sadece bir kullanıcı vardı, o yüzden sadece database[0] yazıp ilk kullanıcıyı kontrol ediyorduk. Ancak normalde böyle bir sitenin birden çok üyesi vardır. Bu yüzden tüm kullanıcıları tarayıp eşleşme var mı diye bakmamız gerek. Bunun içinde bir for loop yazmalıyız.
+
+	function signIn(username, password) {
+	for (var i=0; i < database.length; i++) {
+		if(database[i].username === username && database[i].password === password) {
+			console.log(newsFeed);
+		} else {
+			alert("Sorry, wrong username")
+		}
+	}
+
+Ancak böyle yaptığımızda girdiğimiz bilgileri her bir kullanıcıyla karşılaştırır ve eşleşme bulamadığı her seferinde wrong username uyarısı verir, taki eşleşmeyi bulana kadar. Bunu engellemek için yeni bir function yaratıp eşleşme olup olmadığını arka planda kontrol etmeliyiz.
+
+	function isUserValid(username, password) {
+		for (var i=0; i < database.length; i++) {
+			if(database[i].username === username && database[i].password === password) {
+				return true;
+			} 
+		}
+		return false;
+	}
+
+Bu function'da database'deki bilgilerle girilen bilgileri tek tek kontrol ediyor, eğer bir eşleşme yakalarsa return true değerini veriyor. Eşleşme yoksa sonraki return olan false'a geçiyor. Buradan sonra asıl kod olan sign in function'a geçiş yapıyoruz.
+
+	function signIn(username, password) {
+		if (isUserValid(username, password)) {
+			console.log(newsfeed);
+		} else {
+			alert("Sorry wrong username");
+		}
+	}
+
+Kullanıcı adı ve şifresini isUserValid function'ı ile arka planda kontrol ettikten sonra eğer bilgiler doğruysa konsola newsfeed'i log'luyoruz. Eğer false dönüş olmuşsa "Sorry wrong username" uyarısı geliyor.
+
