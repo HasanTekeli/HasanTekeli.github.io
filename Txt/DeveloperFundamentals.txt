@@ -1,2 +1,5 @@
 caniuse.com Kullanılan elementlerin browser compatibility'sini gösteriyor.
 
+babeljs.io ==> yeni js özelliklerinin tüm tarayıcılarda kullanılabilmesi için kodu eski sürümlere compile eder. Mesela ES6 ile yazılmış kodu, ES5'e çevirir.
+
+innerHTML; siteyi bozabilir ve cross-site scripting saldırısına maruz kalmasına neden olabilir. 

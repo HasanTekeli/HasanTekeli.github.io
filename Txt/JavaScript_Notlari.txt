@@ -24,6 +24,13 @@ Types (JS'e girebileceğimiz elementler)
 5. Null
 	- boş object'lerde kullanılır ve kesinlikle değer atanamaz.
 6. Symbol (New in ECMAScript 6) //
+	- Bu tür tamamen unique elementler oluşturmak için kullanılır. Mesela;
+
+		let sym1 = Symbol('foo');
+		let sym2 = Symbol('foo');
+
+	- Bu ikisi aynı görünse de (değer olarak), aynı değildir. Bunu aynı değerleri kullanan birçok farklı değişken yapacağımızda kullanmalıyız.
+
 7. Object
 
 --------------
@@ -54,7 +61,61 @@ alert() ise bir uyarı kutusu çıkartır. Bu ikisini kullanarak toplama yapabil
 	  var sum = Number(first) + Number(second); 
 	  alert("The sum is: " + sum);
 
-prompt() ile girilen değerler metin olarak görünür. Bunların sayı olduğunu JS'e söylemek için Number() kullanılabilr.
+prompt() ile girilen değerler metin olarak görünür. Bunların sayı olduğunu JS'e söylemek için Number() kullanılabilir.
+
+let ve const
+------------
+
+	const player = 'bobby';
+	let experience = 100;
+	let wizardLevel = false;
+
+	if (experience = 90) {
+		let wizardLevel = true;
+		console.log('inside', wizardLevel);
+	}
+
+	console.log('outside', wizardLevel);
+
+Yazdığımızda "inside true, outside false" çıktısını verir. let ile var arasındaki fark(let wizardLevel'lar yerine var wizardLevel yazsaydık), ikinci wizardLevel bir function'ın içinde olmadığı için önceki var'ı sıfırlayıp yeni değeri (true) atardı ve konsol çıktısı "inside true, outside true" olurdu.
+
+const sabit bir değişkendir. Yeni bir değişken atanamaz. Bundan sonra var kullanmıyoruz, değişmeyen bir değişken(?) :) yapacaksak const, değişebilen bir değişken yazacaksak let kullanacağız. const içine object koyabiliriz ve bu object'lerin değerini değiştirebiliriz ancak değişkene başka bir değer atayamayız.
+
+	const a = "Simon";
+	const b = true;
+	const c = {};
+
+	const obj = { a, b, c, }
+
+Template Strings
+
+	const greeting = "Hello " + name + " you seem to be doing " + greeting + "!";
+
+Bunu yapmak yerine 
+	
+	const name = "Sally";
+	const age = 34;
+	const pet = "horse";
+	const greetingBest = `Hello ${name} you seem to be ${age-10}. What a lovely ${pet} you have.`;
+
+Şeklinde yapabiliriz. 
+
+Default Arguments
+
+Üsttekini function içine ekleyebiliriz
+
+	function greet(name='', age=30, pet='cat') {
+		return `Hello ${name} you seem to be ${age-10}. What a lovely ${pet} you have.`;
+	}
+
+Bu function'ı çalıştırdığımızda konsola çıkan sonuç:
+Hello  you seem to be 20. What a lovely cat you have. 
+
+Bu function'ın değerlerini değiştirebiliriz.
+
+	greet("john", 50, "monkey");
+
+Değerleri değiştirirken tekrar atama yapmamıza gerek yok, sıralamayı tutturduğumuz sürece otomatik olarak kendisi atama yapar.
 
 ------------
 Control Flow - JS Conditionals
@@ -84,6 +145,68 @@ ELSE IF (ikiden fazla seçenek)
 	} else {
 		alert("I don't know you");
 	}
+
+
+Ternary Operator
+----------------
+
+	condition ? expr1 : expr2
+
+Bunun anlamı condition doğruysa expr1'i çalıştır, yanlışsa expr2'yi çalıştır. Örnek olarak
+
+	function isUserValid(bool) {
+		return bool;
+	}
+	var answer = isUserValid(true) ? "You may enter" : "Access Denied";
+
+Burada değeri true yaparsak "You may enter" bilgisini veriyor. False yaparsak "Access Denied" bilgisini veriyor.
+
+	var automatedAnswer = 
+		"Your account # is " + ( isUserValid(false) ? "1234" : "not available");
+
+Üstteki değişken olan answer'ı biraz geliştirdik. Eğer değer doğru ise "Your account # is 1234", yanlış ise "Your account # is not available" yazısını veriyor.
+
+Bunu yapmanın bir diğer yolu function oluşturmaktır. 
+
+	function condition() {
+		if (isUserValid(true)) {
+			return "You may enter";
+		} else {
+			return "Access denied";
+		}
+	}
+
+	var answer2 = condition();
+
+Bu şekilde uzun uzun yazmaktansa üstteki gibi kısa ve öz yazmak daha etkilidir. 
+
+
+Switch Statement
+----------------
+
+	function moveCommand(direction) {
+		var whatHappens;
+		switch(direction) {
+			case "forward":
+				whatHappens = "you encounter a monster";
+				break;
+			case "back":
+				whatHappens = "you arrived home";
+				break;
+			case "right":
+				whatHappens = "you found a river";
+				break;
+			case "left":
+				whatHappens = "you run into a troll";
+				break;
+			default:
+				whatHappens = "please enter a valid direction";
+		}
+		return whatHappens;
+	}
+
+Bir sürü if else statement kullanmaktansa switch statement çok daha kolay bir şekilde yazılabilir. Aralardaki break'lerin anlamı eğer condition tuttuysa (yani mesela forward yazıldıysa) diğer case'lere bakmadan function'dan çıkar ve sonrasında ne yapacağına bakar (üstteki örnekte "return whatHappens;").
+
 
 ----------------------
 Logical Operators
@@ -167,6 +290,20 @@ Eğer function bir sonuç verecekse (mesela matematik işlemleri) return ile yap
 			return a*b;
 		}
 	}
+
+
+Arrow Function
+--------------
+
+	function add(a, b) {
+		return a + b;
+	}
+
+Yazmak yerine arrow function kullanılabilir.
+
+	const add = (a, b) => a + b;
+
+Eğer üstteki gibi function'ın içinde sadece bir return bulunuyorsa bunu arrow function'la tek satırda yapabiliriz. 
 
 ------------------------
 Data Structures - Arrays
@@ -519,4 +656,12 @@ Bu function'da database'deki bilgilerle girilen bilgileri tek tek kontrol ediyor
 	}
 
 Kullanıcı adı ve şifresini isUserValid function'ı ile arka planda kontrol ettikten sonra eğer bilgiler doğruysa konsola newsfeed'i log'luyoruz. Eğer false dönüş olmuşsa "Sorry wrong username" uyarısı geliyor.
+
+
+
+----------------
+ES6 and JS
+----------------
+
+ECMAScript (ES), standartlaştırılmış JavaScript'tir. ES6'in anlamı ECMAScript version 6'dır.
 

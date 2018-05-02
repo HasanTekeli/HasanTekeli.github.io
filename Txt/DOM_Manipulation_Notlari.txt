@@ -10,9 +10,9 @@ JS kullanarak bir web sayfasında yapabileceklerimiz (buna DOM Manipulation deni
 
 DOM'un açılımı document object model. DOM web sitesinde bulunan parçaların tümüdür (head, body, h1, p etc...). Bir websitesini açmaya çalıştığımızda tarayıcı otomatik olarak DOM'u oluşturur. Javascript'in site üzerinde gerekli değişiklikleri yapabilmesi için DOM'a ihtiyaç duyuyoruz.
 
-Tarayıcılarda DOM'a document object'i ile ulaşabiliriz (konsola "document.write("hello")" yazarsak web sayfasında hello yazısını görebiliriz.
+Tarayıcılarda DOM'a document object'i ile ulaşabiliriz (konsola "document.write("hello")" yazarsak web sayfasında hello yazısını görebiliriz.)
 
-Document taraıcıda gördüğümüz ekrandır. Document'in parent object'i window'dur. Window ise tarayıcının tamamıdır. Mesela daha önce gördüğümüz alert(), window'un alt fonksiyonudur. Bu sayede alert() function'ını önüne birşey yazmadan kullanabiliriz. window'un altında bulunan function'lar window belirtilmeden kullanılabilir, çünkü en kapsayıcı olan window'dur. Ancak üstte gördüğümüz write() function'ını tek başına kullanamayız. Çünkü window'un değil document'in bir fonksiyonudur (bu yüzden document.write() yazmalıyız).
+Document tarayıcıda gördüğümüz ekrandır. Document'in parent object'i window'dur. Window ise tarayıcının tamamıdır. Mesela daha önce gördüğümüz alert(), window'un alt fonksiyonudur. Bu sayede alert() function'ını önüne birşey yazmadan kullanabiliriz. window'un altında bulunan function'lar window belirtilmeden kullanılabilir, çünkü en kapsayıcı olan window'dur. Ancak üstte gördüğümüz write() function'ını tek başına kullanamayız. Çünkü window'un değil document'in bir fonksiyonudur (bu yüzden document.write() yazmalıyız).
 
 JS document object'ini gerekli görürse değiştirebilir. 
 
@@ -78,16 +78,16 @@ classList
 
 classList.add("coolTitle"); ile yeni bir class ekleriz
 
-classList.remove("") ile kaldırırız.
+classList.remove("coolTitle") ile kaldırırız.
 
-classList.toggle("") remove yerine kullanılabilir. Bu sayede class'lar arasında (orijinal ile sonradan eklenen) geçiş yapılabilir. Mesela shopping list'te bir item'a tıkladığımızda üzeri çizili olmaaını ikinci kere tıkladığımızda normale dönmesini istiyorsak bunu kullanırız.
+classList.toggle("done") remove yerine kullanılabilir. Bu sayede class'lar arasında (orijinal ile sonradan eklenen) geçiş yapılabilir. Mesela shopping list'te bir item'a tıkladığımızda üzeri çizili olmasını ikinci kere tıkladığımızda normale dönmesini istiyorsak bunu kullanırız.
 
 innerHTML
 ---------
 
 - Bunu kullanmak tehlikeli diyor. 
 
-document.querySelector("h1").innerHTML = "<strong>!!!!</strong>; yazdığımızda h1'ı seçer ve onu !!!!! ile değiştirir.
+document.querySelector("h1").innerHTML = "<strong>!!!!</strong>; yazdığımızda ilk h1'ı seçer ve onu !!!!! ile değiştirir.
 
 parentElement
 -------------
@@ -144,14 +144,14 @@ DOM Events kullanarak güzel bir shopping list yapabiliriz. İlk olarak html kod
 
 Bu kodda sadece başlık olarak Shopping List yazısı, altında metin girilecek bir kutu ve yanında da Enter butonu bulunuyor. Şimdi JS koduna geçiyoruz.
 
-1-	var button = getElementById("enter");
-2-	var input = document.getElementById("userinput");
-6-	var ul = document.querySelector("ul")
-3-	button.addEventListener("click", function() {
-4-		var li = document.createElement("li");
-5-//	li.appendChild(document.createTextNode("testing"))
-8-		li.appendChild(document.createTextNode(input.value));
-7-		ul.appendChild(li);
+	var button = getElementById("enter"); //1
+	var input = document.getElementById("userinput"); //2
+	var ul = document.querySelector("ul"); //6
+	button.addEventListener("click", function() { //3
+		var li = document.createElement("li"); //4
+	//	li.appendChild(document.createTextNode("testing")) //5
+		li.appendChild(document.createTextNode(input.value)); //8
+		ul.appendChild(li); //7
 		})
 
 Açıklama; üstteki html kodunda butona ve input yerine ID tanımlamıştık. İlk iki satırda bunları bir değişkene atadık. 
@@ -169,11 +169,11 @@ Açıklama; üstteki html kodunda butona ve input yerine ID tanımlamıştık. �
 	var input = document.getElementById("userinput");
 	var ul = document.querySelector("ul")
 	button.addEventListener("click", function() {
-9-		if (input.value.length > 0) {
+		if (input.value.length > 0) { //9
 			var li = document.createElement("li");
 			li.appendChild(document.createTextNode(input.value));
 			ul.appendChild(li);
-10-			input.value = "";
+			input.value = ""; //10
 			}
 		})
 
@@ -192,25 +192,25 @@ Butona basarak list item ekleyebiliyoruz. Sadece klavyedeki enter tuşuna basara
 
 Burada yaptığımız değişiklikler şu şekilde. İlk olarak bu bir button değil input olduğu için ilk satırın ilk kelimesi olan button'ı input ile değiştirdik. Sonrasında eventlistener'ı keypress yaptık ve function'a bir isim verdik(event). Boş metin kutusunu kabul etmemesi için yaptığımız if condition'a bir başka değer daha ekleyerek enter tuşunun keyCode'u olan 13'ü ekliyoruz (Burada event.keyCode yerine event.which'te aynı işlevi görür). Buraya kadar yazdığımız kodun son hali şu şekilde:
 
-1-	var button = getElementById("enter");
-2-	var input = document.getElementById("userinput");
-3-	var ul = document.querySelector("ul")
+	var button = getElementById("enter"); //1
+	var input = document.getElementById("userinput"); //2
+	var ul = document.querySelector("ul") //3
 
-4-	button.addEventListener("click", function() {
-5-		if (input.value.length > 0) {
-6-			var li = document.createElement("li");
-7-			li.appendChild(document.createTextNode(input.value));
-8-			ul.appendChild(li);
-9-			input.value = "";
+	button.addEventListener("click", function() { //4
+		if (input.value.length > 0) { //5
+			var li = document.createElement("li"); //6
+			li.appendChild(document.createTextNode(input.value)); //7
+			ul.appendChild(li); //8
+			input.value = ""; //9
 			}
 		})
 
-10-	input.addEventListener("keypress", function(event) {
-11-		if (input.value.length > 0 && event.keyCode === 13) {
-12-			var li = document.createElement("li");
-13-			li.appendChild(document.createTextNode(input.value));
-14-			ul.appendChild(li);
-15-			input.value = "";
+	input.addEventListener("keypress", function(event) { //10
+		if (input.value.length > 0 && event.keyCode === 13) { //11
+			var li = document.createElement("li"); //12
+			li.appendChild(document.createTextNode(input.value)); //13
+			ul.appendChild(li); //14
+			input.value = ""; //15
 			}
 		})
 
@@ -253,4 +253,298 @@ Son olarak button ve input event listener'lardaki function'ları (4 ve 10. satı
 
 	input.addEventListener("keypress", addListAfterKeypress);
 
-Ders 99'dan devam
+
+
+---------------------------------
+Shopping List - Gelişmiş versiyon
+---------------------------------
+
+Üstte görülen orijinal versiyona bu versiyonda 2 yeni özellik ekliyoruz. Bu özellikler şunlar:
+
+- Bir item'ın üzerine tıklandığında class'ı done'a çevirerek üstünün çizilmesini sağlıyor.
+- Her item'ın yanına (var olan ve yeni eklenen) bir delete butonu eklenecek ve bu buton item'ı listeden silecek.
+
+-----------------------------------------------
+var button = document.getElementById("enter");
+var input = document.getElementById("userinput");
+var ul = document.querySelector("ul");
+var listItems = document.getElementsByTagName("li");
+var dlt = document.querySelectorAll(".delete");
+// Üstteki 4 değişkeni daha önceden eklemiştik, son eklediğimiz değişken olan dlt, class'ı delete olan itemları seçmek için kullanılıyor.
+
+function inputLength() {
+	return input.value.length;
+}
+
+//Delete butonunu oluşturma
+function delButton (parent) {
+	var del = document.createElement("button");
+	del.appendChild(document.createTextNode("Delete!"));
+	del.className = "delete";
+	parent.appendChild(del);
+}
+
+//Delete Function'ı, butona tıklandığında item'ı listeden kaldırmaya yarıyor.
+function deleteMe() {
+	for (var i = 0; i < dlt.length; i++) {
+		dlt[i].addEventListener("click", function() {
+			this.parentNode.remove();
+		})
+	}
+}
+
+//Toggle function'ı, tıklanan item'ın üzerinin çizilmesini sağlıyor. Bunu yaparken css dosyasındaki "done" bölümünü kullanıyor.
+function addToggle() {
+	this.classList.toggle("done");
+}
+
+
+function createListElement() {
+	var li = document.createElement("li");
+	li.appendChild(document.createTextNode(input.value));
+	ul.appendChild(li);
+	//toggle
+	li.addEventListener("click", addToggle);
+	//delete
+	delButton(li);
+	dlt = document.querySelectorAll(".delete");
+	deleteMe();
+	input.value = "";
+}
+
+
+
+function addListAfterClick() {
+	if (inputLength() > 0) {
+		createListElement();
+	}
+}
+
+function addListAfterKeypress(event) {
+	if (inputLength() > 0 && event.keyCode === 13) {
+		createListElement();
+	}
+}
+
+//Burada var olan item'lara Toggle ve Delete Butonu ekleniyor.
+for (var i = 0; i < listItems.length; i++) {
+	listItems[i].addEventListener("click", addToggle);
+	delButton(listItems[i]);
+	dlt = document.querySelectorAll(".delete");
+}
+
+deleteMe();
+
+
+
+button.addEventListener("click", addListAfterClick);
+
+input.addEventListener("keypress", addListAfterKeypress);
+---------------------------------------------------------
+
+
+--------------------
+Background Generator
+--------------------
+
+Burada sayfaya iki adet renk seçim butonu koyuyoruz ve seçtiğimiz renklere göre arka plan renklerinin gradient olarak güncellenmesini sağlıyoruz.
+
+İlk olarak HTML kodu:
+
+	<!DOCTYPE html>
+	<html>
+	<head>
+		<title>Gradient Background</title>
+		<link rel="stylesheet" type="text/css" href="style.css">
+	</head>
+	<body id="gradient">
+		<h1>Background generator</h1>
+		<input class="color1" type="color" name="color1" value="#00ff00">
+		<input class="color2" type="color" name="color2" value="#ff0000">
+		<h2>Current CSS Background</h2>
+		<h3></h3>
+		<script type="text/javascript" src="index.js"></script>
+	</body>
+	</html>
+
+Body tag'i içinde input type olarak color girdiğimizde bize renk seçimi yapabileceğimiz paletleri açan kutucuklar verir. <h3> kısmını boş bırakmamızın sebebi, oraya seçtiğimiz renklerin rgb olarak yer aldığı kodunu ekleyebilmektir. Alttaki JS kodunda ilk seçim h3.
+
+
+---------
+CSS Kodu:
+
+	body {
+		font: 'Raleway', sans-serif;
+		color: rgba(0,0,0,.5);
+		text-align: center;
+		text-transform: uppercase;
+		letter-spacing: .5em;
+		top: 15%;
+		background: linear-gradient(to right, red, yellow);
+	}
+
+	h1 {
+		font: 600 3.5em 'Raleway', sans-serif;
+		color: rgba(0,0,0,.5);
+		text-align: center;
+		text-transform: uppercase;
+		letter-spacing: .5em;
+		width: 100%;
+	}
+
+	h3 {
+		font: 900 1em 'Raleway', sans-serif;
+		color: rgba(0,0,0,.5);
+		text-align: center;
+		text-transform: none;
+		letter-spacing: 0.01em;
+	}
+
+CSS kodunda tek önemli olan nokta body içindeki background bölümü. Burada arka planın gradient olmasını istediğimizi söylüyoruz. Gradient yaparken buradaki pattern'i kullanmamız gerekiyor. 
+
+
+----------------
+Javascript Kodu:
+
+	var css = document.querySelector("h3");
+	var color1 = document.querySelector(".color1");
+	var color2 = document.querySelector(".color2");
+	var body = document.getElementById("gradient");
+	var input = document.querySelector("input")
+
+
+	function setGradient() {
+		body.style.background = 
+		"linear-gradient(to right, " 
+		+ color1.value 
+		+ ", " 
+		+ color2.value 
+		+ ")";
+
+		//Alttaki yazmış olduğumuz kod renk seçimlerinin ekrana <h3> tagi içinde, kod şeklinde yansımasını sağlar
+		css.textContent = body.style.background + ";";
+	}
+
+	color1.addEventListener("input", setGradient);
+
+	color2.addEventListener("input", setGradient);
+
+
+--------------------
+Üstteki kodun biraz daha gelişmiş versiyonu. Burada yapılanlar; sayfa ilk yüklendiğinde arkaplan renkleri ile kutu içindeki renkler aynı oluyor. Bir tane rastgele renk butonu koyuldu, bu buton sayesinde arka plan rastgele değişebiliyor. Üstteki kodda sayfa ilk yüklendiğinde <h3> içerisinde rgb kodunu vermiyordu, sadece bir renk seçimi yapıldıktan sonra veriyordu. Altta sayfa her yüklendiğinde bu kodu gösteriyor.
+
+	//Select h3 tag
+	var h3 = document.querySelector("h3");
+	 
+	//Select input colors
+	var color1 = document.querySelector(".color1");
+	var color2 = document.querySelector(".color2");
+	 
+	//Get background
+	var body = document.getElementById("gradient");
+	 
+	//Create new function for color pick
+	function setGradient() {
+	 body.style.background = "linear-gradient(to right, " 
+	+ color1.value + ", " 
+	 + color2.value +")";
+	 h3.textContent = body.style.background + ";";
+	}
+	 
+	//Pick and set Bkground colors 
+	color1.addEventListener("input", setGradient);
+	color2.addEventListener("input", setGradient);
+	 
+	//Match gradient colors
+	color1.addEventListener("input", setGradient());
+	color2.addEventListener("input", setGradient());
+	 
+	//Create button for random color pick
+	var button = document.createElement("button");
+	button.appendChild(document.createTextNode("Select Random Color"));
+	body.appendChild(button);
+	 
+	//Random color selector
+	button.addEventListener("click", getRandomColor);
+	 
+	//Random color generator
+	function randomColor() {
+	 var color = 'rgb(' + (Math.floor(Math.random() * 256)) + ',' 
+	 + (Math.floor(Math.random() * 256)) + ',' 
+	 + (Math.floor(Math.random() * 256)) + ')';
+	  return color;
+	}
+	 
+	//Get random colors from random color generator code
+	function getRandomColor() {
+	 var rndColor1 = randomColor();
+	 var rndColor2 = randomColor();
+	 body.style.background = "linear-gradient(to right, " 
+	+ rndColor1 + ", " 
+	 + rndColor2 +")";
+	 h3.textContent = body.style.background + ";";
+	}
+
+
+------------
+JQuery
+------------
+
+Bu library'nin sorunu çok imperative olması, websitesi gittikçe büyüdükçe işler daha karmaşık hale gelir. Birçok function başka bir functiona bağlandığı için bir yerde hata yapılması tüm siteyi çökertebilir. Bu yüzden jQuery yerine React.js öğreneceğiz.
+
+------------
+Scope
+------------
+
+Function oluştururken göz önünde bulundurulması gereken hiyerarşi.
+Root Scope: window
+Bir altındaki ise : document
+
+	var fun = 5;
+	function funFunction() {
+		//child scope
+		var fun = "hellloooo";
+		console.log(1, fun);
+	}
+	function funerFunction() {
+		//child scope
+		var fun = "byeee";
+		console.log(2, fun);
+	}
+	function funFunction() {
+		//child scope
+		var fun = "ahhhhhhh";
+		console.log(3, fun);
+	}
+	console.log("root", fun);
+
+Üstteki kodda fun değişkenine 4 farklı değer atadık (5, helllooooo, byeee, ahhhhhhh). Bu kodu çalıştırdığımızda konsola "root 5" çıktısı gelir. Çünkü scope'a göre en son konsol logu, window scope'u ele alır. Bunun sonuna function'ları çalıştıran kodları eklersek hepsinin çıktısını verir.
+
+	var fun = 5;
+	function funFunction() {
+		//child scope
+		var fun = "hellloooo";
+		console.log(1, fun);
+	}
+	function funerFunction() {
+		//child scope
+		var fun = "byeee";
+		console.log(2, fun);
+	}
+	function funFunction() {
+		//child scope
+		var fun = "ahhhhhhh";
+		console.log(3, fun);
+	}
+	console.log("root", fun);
+	funFunction();
+	funerFunction();
+	funestFunction();
+
+Bu şekilde yaptığımızda konsol çıktısı:
+	window 5
+	1 "Hellooooo"
+	2 "Byeeee"
+	3 "ahhhhh"
+
+Ancak bu kodu çalıştırdığımızda fun değişkenine sürekli yeni değerler atanır ve ilk değeri olan 5'i kaybeder. Yani bunu konsolda çalıştırdıktan sonra tekrar "console.log(fun);" yazarsak çıktı olarak en son fun değişkeni olan "ahhhhhh"ı verir. Çünkü en son atanan fun değeri odur.
