@@ -52,14 +52,15 @@ var //
 	- Değişkenler simge olarak sadece $ veya _ ile başlayabilir.
 	- Variable olarak herhangi bir Type'ı kullanabiliriz (Numbers, Booleans etc..)
 
-Girdilerle Toplama yapımı
--------------------------
+Var Kullanarak Girdilerle Toplama Yapımı
+
 prompt() sayfanın üstünde metin girebileceğimiz bir kutu çıkartır.
 alert() ise bir uyarı kutusu çıkartır. Bu ikisini kullanarak toplama yapabiliriz.
-	- var first = prompt("enter first number");
-	  var second = prompt("enter second number"); 
-	  var sum = Number(first) + Number(second); 
-	  alert("The sum is: " + sum);
+	
+	var first = prompt("enter first number");
+	var second = prompt("enter second number"); 
+	var sum = Number(first) + Number(second); 
+	alert("The sum is: " + sum);
 
 prompt() ile girilen değerler metin olarak görünür. Bunların sayı olduğunu JS'e söylemek için Number() kullanılabilir.
 
@@ -79,7 +80,7 @@ let ve const
 
 Yazdığımızda "inside true, outside false" çıktısını verir. let ile var arasındaki fark(let wizardLevel'lar yerine var wizardLevel yazsaydık), ikinci wizardLevel bir function'ın içinde olmadığı için önceki var'ı sıfırlayıp yeni değeri (true) atardı ve konsol çıktısı "inside true, outside true" olurdu.
 
-const sabit bir değişkendir. Yeni bir değişken atanamaz. Bundan sonra var kullanmıyoruz, değişmeyen bir değişken(?) :) yapacaksak const, değişebilen bir değişken yazacaksak let kullanacağız. const içine object koyabiliriz ve bu object'lerin değerini değiştirebiliriz ancak değişkene başka bir değer atayamayız.
+const sabit bir değişkendir. Yeni bir değişken atanamaz. Bundan sonra var kullanmıyoruz, değişmeyen bir değişken(?) :) yapacaksak const, değişebilen bir değişken yazacaksak let kullanacağız. const içine object koyabiliriz ve bu object'lerin değerini değiştirebiliriz ancak değişkene başka bir değer atayamayız (mesela tekrar const a = "John" yazarsak hata verir).
 
 	const a = "Simon";
 	const b = true;
@@ -98,7 +99,7 @@ Bunu yapmak yerine
 	const pet = "horse";
 	const greetingBest = `Hello ${name} you seem to be ${age-10}. What a lovely ${pet} you have.`;
 
-Şeklinde yapabiliriz. 
+Şeklinde yapabiliriz. Bunun çıktısı "Hello Sally you seem to be 24. What a lovely horse you have."
 
 Default Arguments
 
@@ -115,7 +116,7 @@ Bu function'ın değerlerini değiştirebiliriz.
 
 	greet("john", 50, "monkey");
 
-Değerleri değiştirirken tekrar atama yapmamıza gerek yok, sıralamayı tutturduğumuz sürece otomatik olarak kendisi atama yapar.
+Değerleri değiştirirken tekrar (değişken isimlerini girerek) atama yapmamıza gerek yok, sıralamayı tutturduğumuz sürece otomatik olarak kendisi atama yapar.
 
 ------------
 Control Flow - JS Conditionals
@@ -281,7 +282,7 @@ Başka bir örnek
 	}
 	multiply(5, 10);
 
-Eğer function bir sonuç verecekse (mesela matematik işlemleri) return ile yapmamız lazım. Bir function'ın içinde birden fazla return yazarsak, ilk return'den sonrasını okumaz ve function'ı sonlandırır. Bu örneğe IF statement eklersek bu durum geçersiz kalır, mesela:
+Eğer function bir sonuç verecekse (mesela matematik işlemleri) return (veya aşağıdaki Arrow Function) ile yapmamız lazım. Bir function'ın içinde birden fazla return yazarsak, ilk return'den sonrasını okumaz ve function'ı sonlandırır. Bu örneğe IF statement eklersek bu durum geçersiz kalır, mesela:
 
 	function multiply(a, b) {
 		if (a > 10 || b > 10) {
@@ -303,7 +304,7 @@ Yazmak yerine arrow function kullanılabilir.
 
 	const add = (a, b) => a + b;
 
-Eğer üstteki gibi function'ın içinde sadece bir return bulunuyorsa bunu arrow function'la tek satırda yapabiliriz. 
+Eğer üstteki gibi function'ın içinde sadece bir return bulunuyorsa bunu arrow function'la tek satırda (return kullanmadan) yapabiliriz. 
 
 ------------------------
 Data Structures - Arrays
@@ -347,7 +348,7 @@ Array Methods
 Data Structures - Objects
 -------------------------
 
-Bir değişken içinde farklı özellikleri toplamak için kullanılır. İki nokta kullanımına dikkat etmelisin.
+Bir değişken içinde farklı özellikleri toplamak için kullanılır. İki nokta ve değerlerden sonra virgül kullanımına dikkat etmeliyiz.
 
 	var user = {
 		name: "John",
@@ -360,7 +361,7 @@ Bir değişken içinde farklı özellikleri toplamak için kullanılır. İki no
 		}
 	};
 
-Object içinde array(spells) ve function(shout) kullanılabilir. Bir object'in içindeki function'a (object'ten sonra nokta ile yazılan şeyler - list.pop) "Method" denir.
+Object içinde array (spells) ve function (shout) kullanılabilir. Bir object'in içindeki function'a (object'ten sonra nokta ile yazılan şeyler - list.pop) "Method" denir.
 Object içinden bir item'ı seçmek için
 	
 	user.name;
@@ -468,8 +469,8 @@ Terminology
 	var a = true;
 
 6. function vs method (bir objenin içindeki function)
+	
 	function thisIsAFunction() {
-
 	}
 ------------------
 	var obj = {
@@ -504,7 +505,7 @@ FOR Loop
 
 	}
 
-Üstte görülen for loop'ların genel ifadesi, neredeyse her for loop'ta görülebilir. Açıklaması ise şöyle:
+Üstte görülen for loop'ların genel ifadesi(ilk değer başlangıç noktasını verir, ikinci değer durulacak noktayı, üçüncü değer yapılacak işi verir), neredeyse her for loop'ta görülebilir. Açıklaması ise şöyle:
 Burada kullanılan "i" loop'larda genel olarak kullanılan bir ifade, index'e karşılık geliyor. i=0'nun anlamı index'i 0'dan al, yani ilk item'dan başla. i < todos.length 'in anlamı "ilk olarak liste uzunluğunu al ve daha fazla uygulama", yani infinite loop'u durdurmak için kullanılır. i++ ise "ilk item'ı yaptıktan sonra diğer item'lara geç" demek (diğer bir deyişle i+1). 
 
 	for (var i=0; i < todos.length; i++) {
@@ -543,7 +544,7 @@ Bunu düzeltmek için loop devreye girmeden todos.length'i bir değişkene atar�
 		todos.pop();
 	}
 
-Bu şekilde yaptığımızda listedeki tüm itemları çıkartmış oluruz.
+Bu şekilde yaptığımızda, item sayısını baştan belleğe alır ve listedeki tüm itemları çıkartmış oluruz.
 
 
 WHILE Loop
@@ -665,3 +666,155 @@ ES6 and JS
 
 ECMAScript (ES), standartlaştırılmış JavaScript'tir. ES6'in anlamı ECMAScript version 6'dır.
 
+
+------------------
+Advanced Functions
+------------------
+
+İlk olarak eski JS'lerde yazılan bir kodla başlayıp sonrasında onu en yeni versiyona göre güncelleyeceğiz.
+
+	function first() {
+		var greet = 'Hi';
+		function second() {
+			alert(greet);
+		}
+		return second;
+	}
+	var newFunc = first();
+	newFunc();
+
+
+	const first = () => {
+		const greet = 'Hi';
+		const second() {
+			alert(greet);
+		}
+		return second;
+	}
+	const newFunc = first();
+	newFunc();
+
+Üstteki function'ı ne zaman çalıştırsak scope nedeniyle "const greet, const first" tekrar tekrar oluşturulur. Ancak const sadece bir kere oluşturulabildiği için program hata verir. Bu yüzden scope'lar önemli. Şu şekilde düşünülebilir. Mesela programın ilerleyen aşamalarında greet değişkenini tekrar kullanmamız gerekiyorsa bu şekilde olduğunda tekrar değer atayamayız. Ama her function'a kendine ait bir scope oluşturursak, sanki hepsi kendi evreninde yaşıyormuş gibi olur ve birbiri ile bağlantısı olmaz.
+
+Closures
+--------
+Child scope her zaman parent scope'taki değişkeni görebilir. A function ran, the function executed. It's never going to execute again but it's going to remember there are references to those variables so the child scope always has access to the parent scope. Parent scope don't havve access to the child.
+
+Currying
+--------
+
+	const multiply = (a, b) => a * b;
+	const curriedMultiply = (a) => (b) => a * b;
+	curriedMultiply(3);
+
+yazdığımızda sadece (a) değerini alır ve b değerinin eksik olduğunu bildirmek için function'ın devamını konsola yazar. Multiply yapabilmek için şu şekilde iki değer vermemiz gerekiyor. 
+
+	curriedMultiply(3)(4);
+
+Currying bir function'ı başka bir function'ı da dahil ederek birden çok değer alacak şekilde dönüştürmektir. Bunu yapmanın sebebi yine extensible olmasıdır. Örnek olarak şöyle birşey verilebilir. Mesela biz gelen her sayıyı 5 ile çarpmak istiyoruz. Bunu yapmak için a değerini sabitleyebiliriz.
+
+	const multiplyBy5 = curriedMultiply(5);
+
+Bu değişkeni eklediğimizde artık tek yapmamız gereken:
+
+	multiplyBy5(7);
+
+Bu function değer olarak 35 verir. Çünkü üstteki multiplyBy5 function'ında her verilen değeri 5 ile çarpması gerektiğini söyledik.
+
+Compose
+--------
+Üçüncü bir function'ı oluşturmak için iki function'ı birleştirme işine Compose deniyor. Bu türde bir function'ın çıktısı diğer function'ın girdisi olarak kullanılır. 
+
+	const compose = (f, g) => (a) => f(g(a));
+
+Üstteki kodda olan şey, her bir girdi bir function'dır. Bunu şu şekilde kullanabiliriz.
+
+	const sum = (num) => num + 1;
+	compose(sum, sum)(5);
+
+Üstteki kodda çıktı 7'dir. Compose içerisindeki son function olan f(g(a)) kısmına son yazdığımız satırda dedik ki a = 5, ikinci function olarak g'yi alıyoruz o da sum olması lazım, yani 5+1 = 6 eder. Son kısma geldiğimizde f function'ı da aynı şeyi yapar, değer olarak 6'yı alır ve yine sum yapar. Bu da +1 ile 7 eder.
+
+Avoiding Side Effects, Functional Purity
+----------------------------------------
+
+Side effects dediğimiz function'ın kendi dünyasında yaptığı işlerdir. Bir girdi geldiğinde function konsola loglayabilir, başka bir değişkene bu girdiyi atayabilir. Bunlar side effects olarak geçiyor.
+
+	var a = 1;
+	function b() {
+		a = 2;
+	}
+
+Yazdığımızda b function'ı a değerini değiştiriyor ve bu kendi dünyasının dışındaki bir yere etki ediyor. a değeri normalde function'ın kendi evreni içerisinde değil, ancak parent scope'a ulaşabildiği için değişiklik yapabiliyor. Bu yüzden side effect deniyor. Bu tür side effect'lerden kaçınmamız lazım ve bunun için de functional purity olması lazım.
+
+Bunun anlamı da bir function her zaman bir değer vermelidir(it must "return" a value). Girdi olarak ne girersek girelim bir function'ın aynı şekilde tepki vermesi gerekir. Başka bir deyişle bir function'a farklı zamanlarda aynı değeri girersek hep aynı sonucu vermelidir. Buna da determinism deniyor. Functional purity olması için, program çalıştırıldığında değişen durumların (veya verinin) bir function'ın çalışma şeklini değiştirmemesi gerekir.
+
+
+--------------------
+Advanced Arrays
+--------------------
+
+Sade bir array şu şekildeydi:
+
+	var array = [1, 2, 10, 16];
+
+Biraz daha gelişmiş array ise şöyle
+
+	const array = [1, 2, 10, 16];
+	const double = []
+	const newArray = array.forEach((num) => {
+		double.push(num * 2);
+		})
+	console.log(double);
+
+Yazdığımızda array içindeki sayıları alıp 2 ile çarpar ve çıkan sonucu double değişkeninin içerisine yazar (double.push).
+
+Map, Filter, Reduce
+-------------------
+
+Bunlar JS'te en çok işimize yarayacak kodlardır.
+
+Map ile yapabileceklerimiz:
+
+Yukarıda forEach ile yaptığımız şeyi map ile de yapabiliriz (push kısmı hariç, çünkü forEach çıktısını bir yere göndermek ister, ama map'te öyle bir sorun yoktur. Sadece return ile verebiliriz.)
+
+	const mapArray = array.map((num) => {
+		return num * 2;
+		});
+
+map'in forEach'ten iyi olan tarafı, foreach'te başka bir değişken tanımlayıp çıktıyı ona göndermemiz gerekir. Çünkü forEach function'ın yazıldığı değişken bu değerleri değil sadece function'ı tutabilir. Ancak map (return ile) aynı değişken içine çıktıyı gönderebilir. Ayrıca forEach yukarıda bahsedilen side effect'lere neden olabilir. map, return kullandığı için illaki bir çıktı vermesi gerekir. 
+
+Ayrıca forEach ve map'i daha da kısaltabiliriz. Ancak bu kısaltmayı yaptığımızda map oldukça kısa kaldığı için dosya boyutu daha küçük olur ve daha hızlı çalışır.
+
+	const array = [1, 2, 10, 16];
+	const double = []
+	const newArray = array.forEach(num => {
+		double.push(num * 2);
+		})
+	console.log(double);
+
+Burada forEach'ten sonra gelen num'un etrafındaki parantezi kaldırdık. Bir de aynı işi map ile yapalım:
+
+	const array = [1, 2, 10, 16];
+	const mapArray = array.map(num => num * 2);
+	console.log(mapArray);
+
+Görüldüğü üzere forEach'ten oldukça kısa bir hale geldi.
+
+Filter ile yapılabilecekler
+
+	const filterArray = array.filter(num => num > 5);
+
+Filter ile belli bir koşulu karşılayan item'ları seçip yeni değişkene atayabiliriz.
+
+Reduce ile yapılacaklar:
+
+	const reduceArray = array.reduce((accumulator, num) => {
+		})
+
+Accumulator, function'ın içinde oluşan bilgiyi saklayabildiğimiz yerdir.
+
+	const reduceArray = array.reduce((accumulator, num) => {
+		return accumulator + num;
+	}, 0);
+
+Üstte yazılan kodun anlamı reduce ile array içinde bulunan değerleri birleştirerek daha az item oluştur. Örnek üzerinden gidersek, en sonda görülen 0 değeri ile başlıyoruz ve ilk num değeri ile bunu topluyoruz (aradaki + işareti). İlk num değeri 1 olduğu için toplam 1 oluyor ve bu iş array'deki son item'a ulaşana kadar devam ediyor ve sonuç olarak başlangıç değeri olan 0 ve array içindeki dört sayıyı toplayarak sonuç olarak 29 veriyor. Başlangıç değeri olan 0'ı değiştirirsek sonuç da ona göre değişiyor.
