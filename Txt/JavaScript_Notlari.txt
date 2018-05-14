@@ -831,7 +831,7 @@ reference type
 
 Bunları belirlediğimizde object2, object1'e eşittir. Ancak object3 ile object1 eşit değildir. 
 
-Javascript'te "true, undefined, false, null, 'hello', 1" gibi type'lar primitive type olarak geçer. Ancak bir değişken nonprimitive type'tır. Primitives types programlama dili tarafından belirlenmiştir. Ancak Nonprimitive olanları kullanıcılar belirler. Nonprimitive olanlar sanki ayrı kutularda tutuluyor gibidirler. Dolayısıyla yeni bir değere sahip bir değişken, aynı değere sahip başka bir değişkenle eşit olamaz.
+Javascript'te "true, undefined, false, null, 'hello', 1" gibi type'lar primitive type olarak geçer. Ancak bir değişken nonprimitive type'tır. Primitive types programlama dili tarafından belirlenmiştir. Ancak Nonprimitive olanları kullanıcılar belirler. Nonprimitive olanlar sanki ayrı kutularda tutuluyor gibidirler. Dolayısıyla yeni bir değere sahip bir değişken, aynı değere sahip başka bir değişkenle eşit olamaz.
 
 context
 --------
@@ -859,6 +859,7 @@ Yazdığımızda window'u verir. Çünkü başka bir object'in içine girmedi. A
 yazdığımızda bize a: function'ı verir. Burada bir seviye aşağıya indiğimiz için artık window'u vermez. Aşağıdaki instatntiation için bu this kavramı önemlidir. 
 
 instantiation
+-------------
 
 Kodun bir kopyasını oluşturup tekrar kullanmak istediğimizde instantiation yaparız. Mesela multiplayer olan bir oyunda birden çok oyuncu olacağı için her bir oyuncu için baştan aynı kodları yazmak yerine aşağıdakini yapabiliriz. 
 
