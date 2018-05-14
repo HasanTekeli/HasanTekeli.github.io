@@ -312,7 +312,7 @@ Data Structures - Arrays
 
 Array'lerde köşeli parantez kullanılır.
 
-	var listOfAnimals = ["tiger", "cat", "bear", "bird"];
+	var list = ["tiger", "cat", "bear", "bird"];
 
 Array içindeki itemlara ulaşmak için:
 	
@@ -397,7 +397,7 @@ Array içinde object kullanılabilir:
 Build Facebook
 ---------------
 
-// Burada basit bir Facebook yapıldı. İlk olarak database isimli bir değişken oluşturuldu ve içerisine kayıtlı bir kullanıcı eklendi.
+// Burada basit bir Facebook yapılacak. İlk olarak database isimli bir değişken oluşturulacak ve içerisine kayıtlı bir kullanıcı eklenecek.
 
 	var database = [
 	{
@@ -818,3 +818,71 @@ Accumulator, function'ın içinde oluşan bilgiyi saklayabildiğimiz yerdir.
 	}, 0);
 
 Üstte yazılan kodun anlamı reduce ile array içinde bulunan değerleri birleştirerek daha az item oluştur. Örnek üzerinden gidersek, en sonda görülen 0 değeri ile başlıyoruz ve ilk num değeri ile bunu topluyoruz (aradaki + işareti). İlk num değeri 1 olduğu için toplam 1 oluyor ve bu iş array'deki son item'a ulaşana kadar devam ediyor ve sonuç olarak başlangıç değeri olan 0 ve array içindeki dört sayıyı toplayarak sonuç olarak 29 veriyor. Başlangıç değeri olan 0'ı değiştirirsek sonuç da ona göre değişiyor.
+
+----------------------
+Advanced Objects - 114
+----------------------
+
+reference type
+-------------
+	var object1 = { value: 10 };
+	var object2 = object1;
+	var object3 = { value: 10 };
+
+Bunları belirlediğimizde object2, object1'e eşittir. Ancak object3 ile object1 eşit değildir. 
+
+Javascript'te "true, undefined, false, null, 'hello', 1" gibi type'lar primitive type olarak geçer. Ancak bir değişken nonprimitive type'tır. Primitives types programlama dili tarafından belirlenmiştir. Ancak Nonprimitive olanları kullanıcılar belirler. Nonprimitive olanlar sanki ayrı kutularda tutuluyor gibidirler. Dolayısıyla yeni bir değere sahip bir değişken, aynı değere sahip başka bir değişkenle eşit olamaz.
+
+context
+--------
+Genellikle scope ile karıştırılır. 
+	
+	function b() {
+		let a = 4;
+	}
+Bu fonksiyonda a'nın scope'u b'dir. window scope'tan bu a'ya ulaşamayız.
+
+Context ise bize bir object'in içinde nerede olduğumuzu söyler. this parametresi ile uygulanır ve bu this oldukça kafa karıştırıcı olabilir. This'in anlamı içinde olduğumuz object'i seçmektir.
+
+	function a() {
+		console.log(this);
+	}
+
+Yazdığımızda window'u verir. Çünkü başka bir object'in içine girmedi. Ancak;
+
+	const object4 = {
+		a: function() {
+			console.log(this)
+		}
+	}
+
+yazdığımızda bize a: function'ı verir. Burada bir seviye aşağıya indiğimiz için artık window'u vermez. Aşağıdaki instatntiation için bu this kavramı önemlidir. 
+
+instantiation
+
+Kodun bir kopyasını oluşturup tekrar kullanmak istediğimizde instantiation yaparız. Mesela multiplayer olan bir oyunda birden çok oyuncu olacağı için her bir oyuncu için baştan aynı kodları yazmak yerine aşağıdakini yapabiliriz. 
+
+	class Player {
+		constructor(name, type) {
+			this.name = name;
+			this.type = type;
+		}
+		introduce() {
+			console.log(`Hi I am $(this.name), I'm a $(this.type)`);
+		}
+	}
+
+Bu şekilde ilk olarak constructor bölümünde oyun karakterinin ismi ve türünü belirtiyoruz. this. dediğimiz kısım sayesinde bu kodu her bir oyuncuya ayrı ayrı uygulayabiliriz.
+
+	class Wizard extends Player {
+		constructor(name, type) {
+			super(name, type)
+		}
+		play() {
+			console.log(`WEEEEEEE I'm a $(this.type)`);
+		}
+	}
+
+	const wizard1 = new Wizard('Shelly', 'Healer');
+	const wizard2 = new Wizard('Shawn', 'Dark Magic');
+
