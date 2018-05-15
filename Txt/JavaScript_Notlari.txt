@@ -861,7 +861,7 @@ yazdığımızda bize a: function'ı verir. Burada bir seviye aşağıya indiği
 instantiation
 -------------
 
-Kodun bir kopyasını oluşturup tekrar kullanmak istediğimizde instantiation yaparız. Mesela multiplayer olan bir oyunda birden çok oyuncu olacağı için her bir oyuncu için baştan aynı kodları yazmak yerine aşağıdakini yapabiliriz. 
+Kodun bir kopyasını oluşturup tekrar kullanmak istediğimizde instantiation yaparız. Bir kodun bir sürü kopyasını oluşturma işlemine instantiation deniyor. Mesela multiplayer olan bir oyunda birden çok oyuncu olacağı için her bir oyuncu için baştan aynı kodları yazmak yerine aşağıdakini yapabiliriz. Yeni bir class oluştururken class adının büyük harfle başlaması kolaylık sağlıyor(?). Aşağıda Player isimli bir class oluşturuyoruz ve her yeni bir player oluşturduğumuzda ilk çalışacak olan function construction'dır.
 
 	class Player {
 		constructor(name, type) {
@@ -875,6 +875,8 @@ Kodun bir kopyasını oluşturup tekrar kullanmak istediğimizde instantiation y
 
 Bu şekilde ilk olarak constructor bölümünde oyun karakterinin ismi ve türünü belirtiyoruz. this. dediğimiz kısım sayesinde bu kodu her bir oyuncuya ayrı ayrı uygulayabiliriz.
 
+Aşağıda yeni bir oyuncu olan wizard olşuturuyoruz. Bunu yaparken Player'ı genişletiyoruz(extend). super() olan kısım asıl player içindeki constructor'a ulaşmak için kullanılır. 
+
 	class Wizard extends Player {
 		constructor(name, type) {
 			super(name, type)
@@ -887,3 +889,84 @@ Bu şekilde ilk olarak constructor bölümünde oyun karakterinin ismi ve türü
 	const wizard1 = new Wizard('Shelly', 'Healer');
 	const wizard2 = new Wizard('Shawn', 'Dark Magic');
 
+Son iki satırda oluşturduğumuz iki yeni wizard'a baktığımızda üstteki kodlar sayesinde yeni bir wizard oluşturmamızın ne kadar kolay olduğunu görebiliriz. Her yeni wizard oluşturma esnasında sadece son satırı çoğaltıp gerekli değişiklikleri yapmamız yeterlidir. 
+
+---------
+ES7
+---------
+
+.includes()
+-----------
+Herhangi bir object'in içeriğinde parantez içerisindeki değer var mı yok mu kontrol eder. Mesela
+
+	hellllooo.includes("o");
+
+yazdığımızda true değerini verir. Çünkü hellloooo kelimesi içinde o harfi bulunmaktadır. Bunu array'ler içinde kullanabiliriz.
+
+
+**
+-------
+Bu iki yıldız karakterinden sonra gelen sayı, değerin üssünü verir. 
+	
+	const cube = (x) => x**3
+
+yazdığımızda x üzeri 3 hesabını yapar.
+
+	cube(3);
+
+İşleminin sonucu 27'dir. 3 x 3 x 3 = 27
+
+--------
+ES8
+--------
+.padStart()
+.padEnd()
+
+Bu ikisi object'in başına veya sonuna boşluk eklemek için kullanılıyor.
+
+	"turtle".padStart(10);
+
+yazdığımızda sonuç "          turtle" olacaktır.
+
+
+Object.values
+Object.entries
+Object.keys (eski)
+
+	let obj = {
+		username0: 'Santa',
+		username1: 'Rudolf',
+		username2: 'Mr. Grinch'
+	}
+
+Üstteki gibi bir saçma object'imiz olduğunda filter gibi faydalı araçları kullanamayız. 
+
+	Object.keys(obj).forEach((key, index) => {
+		console.log(key, obj[key]);
+	})
+
+Yazdığımızda koncol çıktısı hem username yazısı hem de değerleri olur.
+
+	Object.values(obj).forEach(value => {
+		console.log(value);
+	})
+
+Yazdığımızda konsol çıktısı sadece değerler olur.
+
+	Object.entries(obj).forEach(value => {
+		console.log(value);
+	})
+
+Yazdığımızda hem username yazılarını hem de değerleri array'ler içinde verir.
+
+Real-life scenario:
+Mesela username0, username1 gibi isimlendirmeleri arka planda server'ın gerçekleştirmesini istiyoruz.
+
+	Object.entries(obj).map(value => {
+		return value[1] + value[0].replace('username', ''); 
+	})
+
+
+
+
+Async Await
