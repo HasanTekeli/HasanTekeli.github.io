@@ -922,16 +922,18 @@ ES8
 .padStart()
 .padEnd()
 
-Bu ikisi object'in başına veya sonuna boşluk eklemek için kullanılıyor.
+Bu ikisi string'in başına veya sonuna boşluk eklemek için kullanılıyor. Bunu yaptığımızda string(tırnak içinde yazdığımız metin) dahil olmak üzere toplam 10 karakter oluyor. Mesela turtle 6 harfli olduğu için padStart başa 4 karakter(boşluk) ekler, toplamda 10 karakter olur.
 
 	"turtle".padStart(10);
 
-yazdığımızda sonuç "          turtle" olacaktır.
+yazdığımızda sonuç "    turtle" olacaktır.
 
 
 Object.values
 Object.entries
 Object.keys (eski)
+------------------
+Bu üçü object'lere sanki bunlar array'miş gibi işlemler yapabilmemizi sağlar(map, filter vb.).
 
 	let obj = {
 		username0: 'Santa',
@@ -939,34 +941,77 @@ Object.keys (eski)
 		username2: 'Mr. Grinch'
 	}
 
-Üstteki gibi bir saçma object'imiz olduğunda filter gibi faydalı araçları kullanamayız. 
+Üstteki gibi bir saçma object'imiz olduğunda filter gibi faydalı araçları kullanamayız. Çünkü bu tür araçlar array'lerde kullanılıyor.
 
 	Object.keys(obj).forEach((key, index) => {
 		console.log(key, obj[key]);
 	})
 
-Yazdığımızda koncol çıktısı hem username yazısı hem de değerleri olur.
+Yazdığımızda konsol çıktısı hem username yazısı hem de değerleri olur. Object.keys bu object'e bir array gibi davranılmasını sağlar.
 
 	Object.values(obj).forEach(value => {
 		console.log(value);
 	})
 
-Yazdığımızda konsol çıktısı sadece değerler olur.
+Yazdığımızda konsol çıktısı sadece değerler(Santa, Rudolf, Mr.Grinch) olur.
 
 	Object.entries(obj).forEach(value => {
 		console.log(value);
 	})
 
-Yazdığımızda hem username yazılarını hem de değerleri array'ler içinde verir.
+Yazdığımızda hem username yazılarını hem de değerleri aşağıdaki gibi array'ler içinde verir.
+
+	["username0", "Santa"]
+	["username1", "Rudolf"]
+	["username2", "Mr.Grinch"]
 
 Real-life scenario:
-Mesela username0, username1 gibi isimlendirmeleri arka planda server'ın gerçekleştirmesini istiyoruz.
+Mesela username0, username1 gibi isimlendirmeleri kaldırıp 0,1,2 sayılarını isimlerin devamına (Santa0, Rudolf1, Mr.Grinch3) yazmak istersek:
 
 	Object.entries(obj).map(value => {
 		return value[1] + value[0].replace('username', ''); 
 	})
 
+return value[1] yazmamızın sebebi, elde etmek istediğimiz değerin array'in ikinci kısımda olması, örnekle açıklamak gerekirse, 958-960. satırlarda yazan kodun sonucu şu şekildedir:
+
+	["username0", "Santa"]
+	["username1", "Rudolf"]
+	["username2", "Mr.Grinch"]
+
+Burada username yazan kısmı değil, devamındaki isimleri almak istersek return value[] kısmına 1 yazmalıyız. Devamında bu değere ekleyeceğimiz şeyi + ile belirtiyoruz, ilk değer olan 0'dan başlayarak username'i boş bir string ile değiştiriyoruz ve sonuç username'ler siliniyor devamındaki sayılar ise kullanıcı adlarının sonuna ekleniyor.
 
 
+Debugging
+----------
+Kodda bulunan hataları bulmamızı sağlar. console.log veya debugger kullanarak hataları veya kodun ne iş yaptığını görebiliriz. Debugger'ın güzelliği, kod içinde looping olacaksa bunları adım adım gösterir ve kodun ne işe yaradığını veya nerede hata verdiğini görmemizi sağlar. Örnek ile:
 
-Async Await
+	const flattened = [[0, 1], [2, 3], [4, 5]].reduce(
+		(a, b) => a.concat(b), []);
+
+Bu kodun ne iş yaptığını anlamak biraz zor. Ama kodda ufak değişiklikler yaparak daha anlaşılır hale getirebiliriz. reduce işlevi daha önceden anlatılmıştı. Bunu göz önüne alarak a olanların accumulator olduğunu anlarız. b ise array'in içindekilerdir. Bu nedenle b yerine array yazabiliriz.
+
+	const flattened = [[0, 1], [2, 3], [4, 5]].reduce(
+		(accumulator, array) => accumulator.concat(array), []);
+
+En sondaki [] işareti nedeniyle accumulator'ın boş bir array ile başlamasını istediğimizi gösteririz. Bu function'ı daha anlaşılır ve console.log yapılabilir hale getirmek için tek satırlık kod halinden çıkartıp uzun haline döndürürüz. Tek satır halinden çıkardığımız için return ifadesini ekleriz.
+
+	const flattened = [[0, 1], [2, 3], [4, 5]].reduce(
+		(accumulator, array) => {
+			console.log('array', array);
+			console.log('accumulator', accumulator);
+			return accumulator.concat(array)
+	}, []);
+
+Bu kodu çalıştırdığımızda 3 looping yaptığını görürüz. Çünkü array içinde 3 farklı array var. Bu function'ın görevi array içindeki 3 array'i tek bir array haline getirmektir. Konsolda flattened yazdığımızda üç farklı array'in içindeki bilgileri tek bir array içine alır, yani sonuç [0, 1, 2, 3, 4, 5] olacaktır.
+
+console.log'un yanısıra bir de debugger kodunu kullanabiliriz.
+
+	const flattened = [[0, 1], [2, 3], [4, 5]].reduce(
+		(accumulator, array) => {
+			debugger;
+			return accumulator.concat(array)
+	}, []);
+
+Bu kodu çalıştırdığımızda konsol, debugger moduna geçer ve kod ne zaman debugger yazısına denk gelirse orada çalışmaya ara verir. Kodun yaptığı bir sonraki işleme geçmek için debugger modunda sağ üstte bulunan step over butonuna tıklamamız gerekir. Bu sayede adım adım kodun ne aşamalardan geçtiğini görebiliriz. Looping aşamalarının hepsi bittikten sonra konsol normal haline döner.
+
+How Javascript Works(Ders:123)
