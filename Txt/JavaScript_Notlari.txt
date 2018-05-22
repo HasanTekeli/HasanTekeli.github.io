@@ -1014,4 +1014,18 @@ console.log'un yanısıra bir de debugger kodunu kullanabiliriz.
 
 Bu kodu çalıştırdığımızda konsol, debugger moduna geçer ve kod ne zaman debugger yazısına denk gelirse orada çalışmaya ara verir. Kodun yaptığı bir sonraki işleme geçmek için debugger modunda sağ üstte bulunan step over butonuna tıklamamız gerekir. Bu sayede adım adım kodun ne aşamalardan geçtiğini görebiliriz. Looping aşamalarının hepsi bittikten sonra konsol normal haline döner.
 
-How Javascript Works(Ders:123)
+How Javascript Works(Ders:123) (Notlar eklenecek)
+Sonunda güzel bilgiler var.
+
+Modules (Ders:124) (Notlar eklenecek)
+ES Modülleri ile ilgili güzel bir makale var onun linkini eklemeliyim.
+
+Sublime Text 3 (Ders: 128)
+
+Önerilen paketler
+Babel
+SidebarEnhancements
+A File Icon
+GitGutter
+BracketHighlighter
+
