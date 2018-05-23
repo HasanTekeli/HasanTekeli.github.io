@@ -1090,3 +1090,18 @@ Merge komutunu terminal veya github sitesinde yapabiliriz. Terminalden yapmak i�
 	git merge master
 
 Bu komutla şu an olduğumuz branch'i master ile birleştirir.
+
+## Fork'u Güncel Tutma
+
+Hali hazırda var olan bir projeyi fork ettiğimizde elimize projenin o anki hali bulunur. Ancak bu projeler birçok kişi tarafından düznlendiği için sürekli fork'u güncellememiz gerekir. Zero-to-Mastery reposunda bulunan getting started klasörü örnek olarak kullanılacaktır. Bunu şu şekilde yapabiliriz. 
+
+	git remote add upstream https://github.com/zero-to-mastery/start-here-guidelines.git
+
+Bu komutu verdiğimizde fork yapılan asıl repo, bizim repomuzun origin'i olarak eklenir. Bizim repomuz ise upstream olarak görünür. Bunu görmek için vereceğimiz komut:
+
+	git remote -v
+
+Forklanan repoyu güncellemek için tek vermemiz gereken komut:
+
+	git pull upstream master
+
