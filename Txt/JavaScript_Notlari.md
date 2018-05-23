@@ -1,9 +1,9 @@
 
-JavaScript Notları
+# JavaScript Notları
 
 
 ----------------------------------------
-Types (JS'e girebileceğimiz elementler)
+## Types (JS'e girebileceğimiz elementler)
 ----------------------------------------
 1. Number // matematik işlemleri yapabiliriz. Tek değişik olan % bu da bölümden kalan sayıyı verir (12 % 9 = 3). 
 	Eğer eşittir işareti yapmak istersek === yapmamız gerekir. Tek = değişken atamaya yarıyor.
@@ -34,7 +34,7 @@ Types (JS'e girebileceğimiz elementler)
 7. Object
 
 --------------
-JS Comparisons
+## JS Comparisons
 --------------
 !== Eşit Değildir
 === Eşittir
@@ -44,7 +44,7 @@ JS Comparisons
 < Küçük
 
 ------------
-JS Variables
+## JS Variables
 ------------
 var // 
 	- var george = "These pretzels are making me thirsty" + "!" Burada george kelimesine "" içindeki metni atadık, bu sayede tüm metni tekrar yazmadan george yazdığımızda metin gelecektir. 
