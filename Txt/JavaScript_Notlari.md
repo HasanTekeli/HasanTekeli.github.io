@@ -2,9 +2,9 @@
 # JavaScript Notları
 
 
-----------------------------------------
+
 ## Types (JS'e girebileceğimiz elementler)
-----------------------------------------
+
 1. Number // matematik işlemleri yapabiliriz. Tek değişik olan % bu da bölümden kalan sayıyı verir (12 % 9 = 3). 
 	Eğer eşittir işareti yapmak istersek === yapmamız gerekir. Tek = değişken atamaya yarıyor.
 
@@ -33,9 +33,9 @@
 
 7. Object
 
---------------
+
 ## JS Comparisons
---------------
+
 !== Eşit Değildir
 === Eşittir
 >= Büyük / Eşit
@@ -43,16 +43,19 @@
 > Büyük
 < Küçük
 
-------------
-## JS Variables
-------------
-var // 
-	- var george = "These pretzels are making me thirsty" + "!" Burada george kelimesine "" içindeki metni atadık, bu sayede tüm metni tekrar yazmadan george yazdığımızda metin gelecektir. 
-	- Değişkenler sayı ile başlayamaz, bir harf ve sayı olabilir.
-	- Değişkenler simge olarak sadece $ veya _ ile başlayabilir.
-	- Variable olarak herhangi bir Type'ı kullanabiliriz (Numbers, Booleans etc..)
 
-Var Kullanarak Girdilerle Toplama Yapımı
+## JS Variables
+
+var // 
+	
+	- var george = "These pretzels are making me thirsty" + "!" 
+
+- Burada george kelimesine "" içindeki metni ve ünlem işaretini atadık, bu sayede tüm metni tekrar yazmadan george yazdığımızda metin gelecektir. 
+- Değişkenler sayı ile başlayamaz, bir harf ve sayı olabilir.
+- Değişkenler simge olarak sadece $ veya _ ile başlayabilir.
+- Variable olarak herhangi bir Type'ı kullanabiliriz (Numbers, Booleans etc..)
+
+### Var Kullanarak Girdilerle Toplama Yapımı
 
 prompt() sayfanın üstünde metin girebileceğimiz bir kutu çıkartır.
 alert() ise bir uyarı kutusu çıkartır. Bu ikisini kullanarak toplama yapabiliriz.
@@ -64,8 +67,8 @@ alert() ise bir uyarı kutusu çıkartır. Bu ikisini kullanarak toplama yapabil
 
 prompt() ile girilen değerler metin olarak görünür. Bunların sayı olduğunu JS'e söylemek için Number() kullanılabilir.
 
-let ve const
-------------
+
+### let ve const
 
 	const player = 'bobby';
 	let experience = 100;
@@ -88,7 +91,7 @@ const sabit bir değişkendir. Yeni bir değişken atanamaz. Bundan sonra var ku
 
 	const obj = { a, b, c, }
 
-Template Strings
+#### Template Strings
 
 	const greeting = "Hello " + name + " you seem to be doing " + greeting + "!";
 
@@ -101,7 +104,7 @@ Bunu yapmak yerine
 
 Şeklinde yapabiliriz. Bunun çıktısı "Hello Sally you seem to be 24. What a lovely horse you have."
 
-Default Arguments
+#### Default Arguments
 
 Üsttekini function içine ekleyebiliriz
 
@@ -118,18 +121,18 @@ Bu function'ın değerlerini değiştirebiliriz.
 
 Değerleri değiştirirken tekrar (değişken isimlerini girerek) atama yapmamıza gerek yok, sıralamayı tutturduğumuz sürece otomatik olarak kendisi atama yapar.
 
-------------
-Control Flow - JS Conditionals
-------------
 
-IF
+## Control Flow - JS Conditionals
+
+
+### IF
 	
 	var name = "Billy";
 	if (name === "Billy") {
 		alert("hi Billy!");
 	};
 
-ELSE (iki seçenek)
+### ELSE (iki seçenek)
 
 	if (name === "Billy") {
 		alert("hi Billy");
@@ -137,7 +140,7 @@ ELSE (iki seçenek)
 		alert("hmm I don't know you");
 	}
 
-ELSE IF (ikiden fazla seçenek)
+### ELSE IF (ikiden fazla seçenek)
 
 	if (name === "Billy") {
 		alert("hi Billy!");
@@ -148,8 +151,8 @@ ELSE IF (ikiden fazla seçenek)
 	}
 
 
-Ternary Operator
-----------------
+### Ternary Operator
+
 
 	condition ? expr1 : expr2
 
@@ -182,8 +185,8 @@ Bunu yapmanın bir diğer yolu function oluşturmaktır.
 Bu şekilde uzun uzun yazmaktansa üstteki gibi kısa ve öz yazmak daha etkilidir. 
 
 
-Switch Statement
-----------------
+### Switch Statement
+
 
 	function moveCommand(direction) {
 		var whatHappens;
@@ -209,9 +212,9 @@ Switch Statement
 Bir sürü if else statement kullanmaktansa switch statement çok daha kolay bir şekilde yazılabilir. Aralardaki break'lerin anlamı eğer condition tuttuysa (yani mesela forward yazıldıysa) diğer case'lere bakmadan function'dan çıkar ve sonrasında ne yapacağına bakar (üstteki örnekte "return whatHappens;").
 
 
-----------------------
-Logical Operators
------------------
+
+## Logical Operators
+
 && and, iki seçenek de doğru olmak zorunda
 
 	if (firstName === "Bob" && lastName === "Smith") {
@@ -231,9 +234,9 @@ Logical Operators
 	}
 
 
--------------
-JS Functions
--------------
+
+## JS Functions
+
 arguments, function'larda parantez içine yazılan şeyler (console.log(helloo)). Bazı functionlarda birden fazla argument yazılabilir.
 
 İki farklı function oluşturma yöntemi var
@@ -256,7 +259,7 @@ Function'ın ismi belli
 
 Function'ın ismi belli değil, bu yüzden anonymous function deniyor.
 
-------------------------
+
 
 	function sing() {
 		console.log("AHHHHHHHHHH");
@@ -293,7 +296,7 @@ Eğer function bir sonuç verecekse (mesela matematik işlemleri) return (veya a
 	}
 
 
-Arrow Function
+### Arrow Function
 --------------
 
 	function add(a, b) {
@@ -306,9 +309,9 @@ Yazmak yerine arrow function kullanılabilir.
 
 Eğer üstteki gibi function'ın içinde sadece bir return bulunuyorsa bunu arrow function'la tek satırda (return kullanmadan) yapabiliriz. 
 
-------------------------
-Data Structures - Arrays
-------------------------
+
+## Data Structures - Arrays
+
 
 Array'lerde köşeli parantez kullanılır.
 
@@ -332,7 +335,7 @@ Array içinde array yapılabilir. Eğer array içinde array'in içindeki bir ite
 
 bize ilk array'in içindeki (zaten bir tane var) üçüncü item olan bear'i verir.
 
-Array Methods
+### Array Methods
 
 	list.shift(); // ilk item'ı atar
 	list.pop(); // son item'ı atar
@@ -344,9 +347,9 @@ Array Methods
 	list.splice(0, 1); // belirtilen item'ı listeden çıkartır (ilk
 							array'in ikinci item'ı)
 
--------------------------
-Data Structures - Objects
--------------------------
+
+
+## Data Structures - Objects
 
 Bir değişken içinde farklı özellikleri toplamak için kullanılır. İki nokta ve değerlerden sonra virgül kullanımına dikkat etmeliyiz.
 
@@ -393,9 +396,8 @@ Array içinde object kullanılabilir:
 	]
 
 
----------------
-Build Facebook
----------------
+
+## Build Facebook
 
 // Burada basit bir Facebook yapılacak. İlk olarak database isimli bir değişken oluşturulacak ve içerisine kayıtlı bir kullanıcı eklenecek.
 
@@ -442,9 +444,9 @@ Build Facebook
 
 	signIn(userNamePrompt, passwordPrompt);
 
------------
-Terminology
------------
+
+
+## Terminology
 
 1. function declaration
 	function newFunction() {
@@ -472,7 +474,7 @@ Terminology
 	
 	function thisIsAFunction() {
 	}
-------------------
+
 	var obj = {
 		thisIsAMethod: function() {
 
@@ -484,14 +486,13 @@ thisIsAFunction() //function
 obj.thisIsAMethod() //method
 
 
-----------------------------------
-Loops
-----------------------------------
+
+## Loops
+
 Loop işleri otomatikleştirmek için kullanılır. Mesela uzun bir todo listemiz var, ve bu listedeki her item'ın sonuna ünlem işareti koymak istiyoruz. Bunu tek tek yapmak oldukça zaman alabilir.
 
 
-FOR Loop
---------
+### FOR Loop
 	
 	var todos = [
 	"clean room",
@@ -547,8 +548,8 @@ Bunu düzeltmek için loop devreye girmeden todos.length'i bir değişkene atar�
 Bu şekilde yaptığımızda, item sayısını baştan belleğe alır ve listedeki tüm itemları çıkartmış oluruz.
 
 
-WHILE Loop
-----------
+
+### WHILE Loop
 
 	var counterOne = 0;
 	while (counterOne < 10) {
@@ -567,8 +568,8 @@ Bunun tersi, yani 10'dan geriye şu şekilde yapabiliriz. CounterOne'daki -- iş
 	}
 
 
-DO Loop (aka "do while loop")
---------
+
+### DO Loop (aka "do while loop")
 
 	var counterTwo = 10
 	do {
@@ -581,8 +582,8 @@ while loop ile do-while loop arasındaki fark; while loop'ta ilk olarak conditio
 do while loop ise ilk olarak işi yapıyor sonra kontrol ediyor. Eğer her ikisinde de > 10 yaparsak ilki hiçbir çıktı vermez, çünkü ilk condition 10'dan küçük olması gerekir diyor. Ancak ikincisinde sadece konsola 10 yazar, sonrası gelmez. CounterTwo 10 olduğu için onu basar konsola sonrasında conditiona takılır.
 
 
-FOREACH Loop (for ile farkı)
-------------
+
+### FOREACH Loop (for ile farkı)
 
 for ve foreach aşağıdaki işlemde aynı işi yapıyor. Ancak forEach ile çok daha az kod yazarak aynı işlemi gereçekleştirebiliyoruz.
 
@@ -620,9 +621,9 @@ Bu şekilde ayırdığımızda logTodos function'ını başka yerlerde de kullan
 	todosImportant.forEach(logTodos);
 
 
---------------
-Facebook App 2
---------------
+
+## Facebook App 2
+
 
 İlk facebook app'te sadece bir kullanıcı vardı, o yüzden sadece database[0] yazıp ilk kullanıcıyı kontrol ediyorduk. Ancak normalde böyle bir sitenin birden çok üyesi vardır. Bu yüzden tüm kullanıcıları tarayıp eşleşme var mı diye bakmamız gerek. Bunun içinde bir for loop yazmalıyız.
 
@@ -660,16 +661,16 @@ Kullanıcı adı ve şifresini isUserValid function'ı ile arka planda kontrol e
 
 
 
-----------------
-ES6 and JS
-----------------
+
+## ES6 and JS
+
 
 ECMAScript (ES), standartlaştırılmış JavaScript'tir. ES6'in anlamı ECMAScript version 6'dır.
 
 
-------------------
-Advanced Functions
-------------------
+
+## Advanced Functions
+
 
 İlk olarak eski JS'lerde yazılan bir kodla başlayıp sonrasında onu en yeni versiyona göre güncelleyeceğiz.
 
@@ -696,12 +697,12 @@ Advanced Functions
 
 Üstteki function'ı ne zaman çalıştırsak scope nedeniyle "const greet, const first" tekrar tekrar oluşturulur. Ancak const sadece bir kere oluşturulabildiği için program hata verir. Bu yüzden scope'lar önemli. Şu şekilde düşünülebilir. Mesela programın ilerleyen aşamalarında greet değişkenini tekrar kullanmamız gerekiyorsa bu şekilde olduğunda tekrar değer atayamayız. Ama her function'a kendine ait bir scope oluşturursak, sanki hepsi kendi evreninde yaşıyormuş gibi olur ve birbiri ile bağlantısı olmaz.
 
-Closures
---------
+### Closures
+
 Child scope her zaman parent scope'taki değişkeni görebilir. A function ran, the function executed. It's never going to execute again but it's going to remember there are references to those variables so the child scope always has access to the parent scope. Parent scope don't havve access to the child.
 
-Currying
---------
+
+### Currying
 
 	const multiply = (a, b) => a * b;
 	const curriedMultiply = (a) => (b) => a * b;
@@ -721,8 +722,9 @@ Bu değişkeni eklediğimizde artık tek yapmamız gereken:
 
 Bu function değer olarak 35 verir. Çünkü üstteki multiplyBy5 function'ında her verilen değeri 5 ile çarpması gerektiğini söyledik.
 
-Compose
---------
+
+### Compose
+
 Üçüncü bir function'ı oluşturmak için iki function'ı birleştirme işine Compose deniyor. Bu türde bir function'ın çıktısı diğer function'ın girdisi olarak kullanılır. 
 
 	const compose = (f, g) => (a) => f(g(a));
@@ -734,8 +736,8 @@ Compose
 
 Üstteki kodda çıktı 7'dir. Compose içerisindeki son function olan f(g(a)) kısmına son yazdığımız satırda dedik ki a = 5, ikinci function olarak g'yi alıyoruz o da sum olması lazım, yani 5+1 = 6 eder. Son kısma geldiğimizde f function'ı da aynı şeyi yapar, değer olarak 6'yı alır ve yine sum yapar. Bu da +1 ile 7 eder.
 
-Avoiding Side Effects, Functional Purity
-----------------------------------------
+
+### Avoiding Side Effects, Functional Purity
 
 Side effects dediğimiz function'ın kendi dünyasında yaptığı işlerdir. Bir girdi geldiğinde function konsola loglayabilir, başka bir değişkene bu girdiyi atayabilir. Bunlar side effects olarak geçiyor.
 
@@ -749,9 +751,7 @@ Yazdığımızda b function'ı a değerini değiştiriyor ve bu kendi dünyasın
 Bunun anlamı da bir function her zaman bir değer vermelidir(it must "return" a value). Girdi olarak ne girersek girelim bir function'ın aynı şekilde tepki vermesi gerekir. Başka bir deyişle bir function'a farklı zamanlarda aynı değeri girersek hep aynı sonucu vermelidir. Buna da determinism deniyor. Functional purity olması için, program çalıştırıldığında değişen durumların (veya verinin) bir function'ın çalışma şeklini değiştirmemesi gerekir.
 
 
---------------------
-Advanced Arrays
---------------------
+## Advanced Arrays
 
 Sade bir array şu şekildeydi:
 
@@ -768,8 +768,8 @@ Biraz daha gelişmiş array ise şöyle
 
 Yazdığımızda array içindeki sayıları alıp 2 ile çarpar ve çıkan sonucu double değişkeninin içerisine yazar (double.push).
 
-Map, Filter, Reduce
--------------------
+
+### Map, Filter, Reduce
 
 Bunlar JS'te en çok işimize yarayacak kodlardır.
 
@@ -819,12 +819,11 @@ Accumulator, function'ın içinde oluşan bilgiyi saklayabildiğimiz yerdir.
 
 Üstte yazılan kodun anlamı reduce ile array içinde bulunan değerleri birleştirerek daha az item oluştur. Örnek üzerinden gidersek, en sonda görülen 0 değeri ile başlıyoruz ve ilk num değeri ile bunu topluyoruz (aradaki + işareti). İlk num değeri 1 olduğu için toplam 1 oluyor ve bu iş array'deki son item'a ulaşana kadar devam ediyor ve sonuç olarak başlangıç değeri olan 0 ve array içindeki dört sayıyı toplayarak sonuç olarak 29 veriyor. Başlangıç değeri olan 0'ı değiştirirsek sonuç da ona göre değişiyor.
 
-----------------------
-Advanced Objects - 114
-----------------------
 
-reference type
--------------
+## Advanced Objects - 114
+
+###reference type
+
 	var object1 = { value: 10 };
 	var object2 = object1;
 	var object3 = { value: 10 };
@@ -833,8 +832,9 @@ Bunları belirlediğimizde object2, object1'e eşittir. Ancak object3 ile object
 
 Javascript'te "true, undefined, false, null, 'hello', 1" gibi type'lar primitive type olarak geçer. Ancak bir değişken nonprimitive type'tır. Primitive types programlama dili tarafından belirlenmiştir. Ancak Nonprimitive olanları kullanıcılar belirler. Nonprimitive olanlar sanki ayrı kutularda tutuluyor gibidirler. Dolayısıyla yeni bir değere sahip bir değişken, aynı değere sahip başka bir değişkenle eşit olamaz.
 
-context
---------
+
+### context
+
 Genellikle scope ile karıştırılır. 
 	
 	function b() {
@@ -858,8 +858,9 @@ Yazdığımızda window'u verir. Çünkü başka bir object'in içine girmedi. A
 
 yazdığımızda bize a: function'ı verir. Burada bir seviye aşağıya indiğimiz için artık window'u vermez. Aşağıdaki instatntiation için bu this kavramı önemlidir. 
 
-instantiation
--------------
+
+
+### instantiation
 
 Kodun bir kopyasını oluşturup tekrar kullanmak istediğimizde instantiation yaparız. Bir kodun bir sürü kopyasını oluşturma işlemine instantiation deniyor. Mesela multiplayer olan bir oyunda birden çok oyuncu olacağı için her bir oyuncu için baştan aynı kodları yazmak yerine aşağıdakini yapabiliriz. Yeni bir class oluştururken class adının büyük harfle başlaması kolaylık sağlıyor(?). Aşağıda Player isimli bir class oluşturuyoruz ve her yeni bir player oluşturduğumuzda ilk çalışacak olan function construction'dır.
 
@@ -891,12 +892,11 @@ Aşağıda yeni bir oyuncu olan wizard olşuturuyoruz. Bunu yaparken Player'ı g
 
 Son iki satırda oluşturduğumuz iki yeni wizard'a baktığımızda üstteki kodlar sayesinde yeni bir wizard oluşturmamızın ne kadar kolay olduğunu görebiliriz. Her yeni wizard oluşturma esnasında sadece son satırı çoğaltıp gerekli değişiklikleri yapmamız yeterlidir. 
 
----------
-ES7
----------
 
-.includes()
------------
+##ES7
+
+### .includes()
+
 Herhangi bir object'in içeriğinde parantez içerisindeki değer var mı yok mu kontrol eder. Mesela
 
 	hellllooo.includes("o");
@@ -904,8 +904,8 @@ Herhangi bir object'in içeriğinde parantez içerisindeki değer var mı yok mu
 yazdığımızda true değerini verir. Çünkü hellloooo kelimesi içinde o harfi bulunmaktadır. Bunu array'ler içinde kullanabiliriz.
 
 
-**
--------
+### **
+
 Bu iki yıldız karakterinden sonra gelen sayı, değerin üssünü verir. 
 	
 	const cube = (x) => x**3
@@ -916,9 +916,9 @@ yazdığımızda x üzeri 3 hesabını yapar.
 
 İşleminin sonucu 27'dir. 3 x 3 x 3 = 27
 
---------
-ES8
---------
+
+## ES8
+
 .padStart()
 .padEnd()
 
@@ -929,10 +929,10 @@ Bu ikisi string'in başına veya sonuna boşluk eklemek için kullanılıyor. Bu
 yazdığımızda sonuç "    turtle" olacaktır.
 
 
-Object.values
-Object.entries
-Object.keys (eski)
-------------------
+### Object.values / 
+### Object.entries / 
+### Object.keys (eski)
+
 Bu üçü object'lere sanki bunlar array'miş gibi işlemler yapabilmemizi sağlar(map, filter vb.).
 
 	let obj = {
@@ -965,7 +965,7 @@ Yazdığımızda hem username yazılarını hem de değerleri aşağıdaki gibi 
 	["username1", "Rudolf"]
 	["username2", "Mr.Grinch"]
 
-Real-life scenario:
+#### Real-life scenario:
 Mesela username0, username1 gibi isimlendirmeleri kaldırıp 0,1,2 sayılarını isimlerin devamına (Santa0, Rudolf1, Mr.Grinch3) yazmak istersek:
 
 	Object.entries(obj).map(value => {
@@ -981,8 +981,8 @@ return value[1] yazmamızın sebebi, elde etmek istediğimiz değerin array'in i
 Burada username yazan kısmı değil, devamındaki isimleri almak istersek return value[] kısmına 1 yazmalıyız. Devamında bu değere ekleyeceğimiz şeyi + ile belirtiyoruz, ilk değer olan 0'dan başlayarak username'i boş bir string ile değiştiriyoruz ve sonuç username'ler siliniyor devamındaki sayılar ise kullanıcı adlarının sonuna ekleniyor.
 
 
-Debugging
-----------
+### Debugging
+
 Kodda bulunan hataları bulmamızı sağlar. console.log veya debugger kullanarak hataları veya kodun ne iş yaptığını görebiliriz. Debugger'ın güzelliği, kod içinde looping olacaksa bunları adım adım gösterir ve kodun ne işe yaradığını veya nerede hata verdiğini görmemizi sağlar. Örnek ile:
 
 	const flattened = [[0, 1], [2, 3], [4, 5]].reduce(
@@ -1014,13 +1014,15 @@ console.log'un yanısıra bir de debugger kodunu kullanabiliriz.
 
 Bu kodu çalıştırdığımızda konsol, debugger moduna geçer ve kod ne zaman debugger yazısına denk gelirse orada çalışmaya ara verir. Kodun yaptığı bir sonraki işleme geçmek için debugger modunda sağ üstte bulunan step over butonuna tıklamamız gerekir. Bu sayede adım adım kodun ne aşamalardan geçtiğini görebiliriz. Looping aşamalarının hepsi bittikten sonra konsol normal haline döner.
 
-How Javascript Works(Ders:123) (Notlar eklenecek)
+## How Javascript Works(Ders:123) (Notlar eklenecek)
+
 Sonunda güzel bilgiler var.
 
-Modules (Ders:124) (Notlar eklenecek)
+## Modules (Ders:124) (Notlar eklenecek)
+
 ES Modülleri ile ilgili güzel bir makale var onun linkini eklemeliyim.
 
-Sublime Text 3 (Ders: 128)
+## Sublime Text 3 (Ders: 128)
 
 Önerilen paketler
 Babel
@@ -1029,8 +1031,8 @@ A File Icon
 GitGutter
 BracketHighlighter
 
-Git + Github 
-------------
+## Git + Github 
+
 Bir github reposunu bilgisayara ilk defa indirmek için:
 	
 	git clone //URL_of_the_repo 
@@ -1063,8 +1065,8 @@ Github ve lokal repo arasındaki farkları görmek için
 
 komutu verilir.
 
-Git + Github Advanced
----------------------
+
+## Git + Github Advanced
 
 Branching
 Github'ta bir proje üzerinde çalışırken eğer aynı proje üzerinde çalışan farklı insanlar varsa hepsinin yaptığı katkılar (commit), master branch'e yüklenirse birbiriyle olan çakışmalar projede sorunlara neden olabilir. Bu yüzden bu tür durumlar için branch'ler kullanılır. Bir commit branch'e yüklendikten sonra çakışma olup olmadığı kontrol edilir ve sorun olmadığı anlaşılırsa master branch ile merge edilir (birleştirilir). 
