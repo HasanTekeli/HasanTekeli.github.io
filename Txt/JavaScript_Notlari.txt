@@ -1029,3 +1029,62 @@ A File Icon
 GitGutter
 BracketHighlighter
 
+Git + Github 
+------------
+Bir github reposunu bilgisayara ilk defa indirmek için:
+	
+	git clone //URL_of_the_repo 
+
+Sadece yapılan değişiklikleri indirmek için 
+
+	git pull
+
+Yeni oluşturduğumuz / düzenlediğimiz dosyaları repoya yüklemek için ilk olarak onları izlenme listesine eklememiz gerekir. 
+
+	git add index.html
+
+Yazdığımızda index.html dosyasını izlenenlere ekledik. Değişiklik yaptığımız tüm dosyaları tek seferde eklemek için
+
+	git add .
+
+kullanmamız gerekir (dosya adı yerine . kullandık).
+
+	git commit -m "mesajınız"
+
+Bu komutla yaptığımız değişikliklerle ilgili bilgiyi "" içerisine mesaj olarak ekliyoruz. Değişiklikleri Github'a göndermek için 
+
+	git push
+
+komutunu kullanıyoruz.
+
+Github ve lokal repo arasındaki farkları görmek için 
+
+	git status
+
+komutu verilir.
+
+Git + Github Advanced
+---------------------
+
+Branching
+Github'ta bir proje üzerinde çalışırken eğer aynı proje üzerinde çalışan farklı insanlar varsa hepsinin yaptığı katkılar (commit), master branch'e yüklenirse birbiriyle olan çakışmalar projede sorunlara neden olabilir. Bu yüzden bu tür durumlar için branch'ler kullanılır. Bir commit branch'e yüklendikten sonra çakışma olup olmadığı kontrol edilir ve sorun olmadığı anlaşılırsa master branch ile merge edilir (birleştirilir). 
+
+	git branch 
+
+yazdığımızda repoda bulunan tüm branchleri listeler. 
+
+	git branch miniozellik
+
+yazdığımızda miniozellik adında yeni bir branch oluşturur.
+
+miniozellik branch'ini varsayılan yapmak için
+
+	git checkout miniozellik
+
+komutu verilir. Bu komuttan sonra yapılan git push komutu değişiklikleri miniozellik branch'ine gönderir.
+
+Merge komutunu terminal veya github sitesinde yapabiliriz. Terminalden yapmak için vermemiz gereken komut birleştirmek istediğimiz branch'e checkout ile geçeriz ve şu komutu veririz.
+
+	git merge master
+
+Bu komutla şu an olduğumuz branch'i master ile birleştirir.
