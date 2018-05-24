@@ -1105,3 +1105,30 @@ Forklanan repoyu güncellemek için tek vermemiz gereken komut:
 
 	git pull upstream master
 
+
+
+## NPM Setup and Package.json 
+
+(Çok fazla ayrıntı var, daha sonra tekrar dönüp notları güncelleyeceğim)
+
+İlk olarak nodejs paketini platforma özgü kurulum dosyasını indirerek kuruyoruz. npm ile inşa edeceğimiz sitenin dizinine girdikten sonra site ile ilgili package.json'ı oluşturmak için şu komutu veririz:
+
+	npm init
+
+Bu komut ile program bize birçok soru sorar, çoğunluğu varsayılan değerde bırakılabilir. Sadece author, webpage gibi bilgileri girmemiz yeterlidir. 
+
+NPM kurduktan sonra npm ile react'i kurmamız gerekir. Bunun haricinde önerilen diğer paketler live-server ve lodash. live-server'ı kurmak için vermemiz gereken komut:
+
+	npm install -g live-server
+
+Kodu açıklamak gerekirse "npm install" kısmı npm kullanarak söylediğim paketi kur, ve -g kurulan paketi global, yani her yerden eriilebilir şekilde kur demektir. npm ile birşeyler kurarken ya bu şekilde global olarak kurarız, ya da projeye özgü bir program kuracaksak locally, yani yerel olarak sadece proje dizininin içine kurarız. live-server tüm projelerimizde kullanabileceğimiz bir program olduğu için globally kurduk. live-server'ın güzelliği bilgisayarı geçici bir server'a çevirmesidir. Kurulduktan sonra tarayıcıda görüntülemek istediğimiz dizine girip live-server komutunu verirsek üzerinde çalıştığımız site tarayıcıda açılır ve kodlarda yaptığımız her türlü değişikliği algılayarak tarayıcıdaki web sayfasını otomatik günceller. 
+
+Bir sonraki program, lodash ise sanki bir javascript eklentisidir. JavaScript'te yazdığımız bir çok koda (getElementById, etc) yenilerini eklemeye yarar. Bunu sadece projeye özgü yani yerel olarak kuracağız.
+
+	npm install lodash
+
+lodash ile eklenen özellikler her tarayıcıda çalışmadığı için ya browserify ya da webpack kullanarak tüm tarayıcılara uyumlu hale getirmeliyiz. (Ayrıntılar daha sonra)
+
+
+## React.js
+
