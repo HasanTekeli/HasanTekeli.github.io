@@ -1,0 +1,26 @@
+.bodyy {
+	max-width: 500px;
+	margin: auto;
+	background: white;
+	padding: 10px;
+}
+
+.btn {
+	margin: auto;
+	display: block;
+}
+
+.MyBtn {
+	background-color: #0080FF;
+	color: white;
+	margin: auto;
+	display: block;
+}
+
+.MyBtn:hover {
+	background-color: #004C99;
+}
+
+.blanks {
+	width: 500px;
+}

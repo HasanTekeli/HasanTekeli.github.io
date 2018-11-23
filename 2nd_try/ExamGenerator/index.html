@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html lang="tr">
+<head>
+	<title>Sınav Hazırlama Programı</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<div id="bodyy" class="bodyy">
+		<h1>Sınav Hazırlama Programına Hoşgeldiniz.</h1>
+		<p>Aşağıdaki kutulara soruları ve seçenekleri yazın ve sınavınız pdf olarak indirilebilir hale gelsin.</p>
+		<p>Doğru cevabı da işaretlerseniz, cevap anahtarını da otomatik olarak alabilirsiniz. </p>
+
+		<div id="questions">
+			<form>
+			  <br>
+			  Soru 1: <input type="text" name="question1" class="blanks"><br>
+			  Seçenekler<br>
+				  <input type="radio" name="options"><input type="text" name="option1.1" class="blanks"><br>
+				  <input type="radio" name="options"><input type="text" name="option1.2" class="blanks"><br>
+				  <input type="radio" name="options"><input type="text" name="option1.3" class="blanks"><br>
+				  <input type="radio" name="options"><input type="text" name="option1.4" class="blanks">
+				<input type="submit" value="PDF Oluştur" name="createPDF" class="MyBtn">
+			</form> 
+		</div>
+		<div>
+			<input type="submit" value="PDF Oluştur" name="createPDF" class="MyBtn">
+			<button class="MyBtn">PDF Oluştur</button><br>
+			<button class="MyBtn">2. Grubu oluştur</button><br>
+			<button class="MyBtn">Yenile / Formu Temizle</button>
+		</div>
+
+	
+</body>
+</html>
