@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Navigation from './components/Navigation/Navigation';
+import Navigation from './components/Navigation/Navigation2';
 import SideDrawer from './components/SideDrawer/SideDrawer';
 import Backdrop from './components/Backdrop/Backdrop'
 import Content from './components/Content/Content'
