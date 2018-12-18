@@ -1,12 +1,17 @@
 import React from 'react';
 import DrawerToggleButton from '../SideDrawer/DrawerToggleButton';
-import Logo from './HAT_LogoV2.png'
+// import Logo from './HAT_LogoV2.png'
 import './Navigation2.css';
 
 const Navigation = props => {
 	return (
 	<div>
+	
 	<header className="site-header">
+		<div className="toolbar__toggle-button">
+				<DrawerToggleButton click={props.drawerClickHandler} />
+		</div>
+
 		<div className="wrap">
 			<div className="title-area">
 				<p className="site-title" itemprop="headline">
