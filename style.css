@@ -1,0 +1,15 @@
+.grid-container {
+	display: grid;
+	grid-gap: 50px;
+
+}
+
+.navbar {
+	grid-column-start: 2;
+	grid-column-end: 4;
+
+}
+
+.navbar, .ul {
+	text-decoration: none;
+}
