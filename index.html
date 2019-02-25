@@ -7,8 +7,12 @@
 <body>
 	<nav class="grid-container">
 
-				<div class="pLink">
-					<a href="portfolio.html" class="navlinks">Portfolio</a>
+				<div class="pLink dropdown">
+					<a onclick="ddFunction()" class="navlinks dropbtn">Portfolio</a>
+					<div id="portfolioDropdown" class="dropdown-content">
+						<a href="#">RoboFriends</a>
+						<a href="#">FaceDetector</a>
+					</div>
 				</div>
 				<div class="rLink">
 					<a href="resume.html" class="navlinks">Resume</a>
@@ -17,5 +21,7 @@
 					<a href="contact.html" class="navlinks">Contact</a>
 				</div>
 	</nav>
+	<footer>This is a playground, so it will be frequently updated.</footer>
+	<script type="text/javascript" src="./script.js"></script>
 </body>
 </html>
