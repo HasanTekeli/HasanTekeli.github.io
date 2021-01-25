@@ -1,7 +1,0 @@
-git pull origin master // github ta deðiþtirilmiþ olan dosyalarý bilgisayara indirmeye yarar
-
-git clone {url} // repo yu indirmeye yarar
-git add . // tüm dosyalarý eklemeye yarar
-git status // henüz yollanmamýþ dosyalarý kontrol etmeye yarar
-git commit -m "Commit mesajýný yaz"
-git push origin master // tüm dosyalarý github a gönderir
